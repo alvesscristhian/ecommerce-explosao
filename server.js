@@ -49,8 +49,8 @@ app.use(sendAllCsurf); // Middleware Envia Token
 app.use(routes); // Usando nossas rotas
 
 app.on('pronto', () => { // Escuta o evento e começa a ouvir requisições
-    app.listen(3000, () => {
-        console.log('Acessar http://localhost:3000');
-        console.log('Servidor executando na porta 3000!');
+    app.listen(3001, () => {
+        console.log('Acessar http://localhost:3001');
+        console.log('Servidor executando na porta 3001!');
     });
 });;
