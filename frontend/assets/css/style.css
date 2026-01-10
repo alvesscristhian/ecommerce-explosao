@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .cards {
+    @apply border border-gray-300 flex flex-col transform transition-transform duration-300 ease-in-out hover:scale-110
+  }
+  .btn-ok {
+    @apply  bg-orange-500 rounded-full transform transition-transform duration-300 ease-in-out hover:scale-110
+  }
+  .pixel {
+    max-width: 470px;
+  }
+}
+
 .slider img {
   animation: slide 12s infinite;
 }
