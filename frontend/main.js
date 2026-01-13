@@ -4,3 +4,6 @@ import './assets/css/style.css';
 
 import btnFunc from './modules/buttons';
 btnFunc();
+
+import trocaMapa from './modules/switchMap';
+trocaMapa();

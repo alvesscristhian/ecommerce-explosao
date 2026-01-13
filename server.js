@@ -14,10 +14,25 @@ const routes = require('./routes'); // Rotas da nossa aplicação, exemplo: /hom
 const path = require('path'); // Trabalhar com caminhos de pastas e arquivos
 const helmet = require('helmet'); // Protege a aplicação definindo cabeçalhos HTTP de segurança, agindo como middleware
 const csrf = require('csurf'); // CSRF Tokens que criamos para nossos formulários, impossibilitando POST's estrangeiros
-const { middlewareGlobal, checkCsurfError, sendAllCsurf } = require('./src/middlewares/middleware'); 
+const { middlewareGlobal, checkCsurfError, sendAllCsurf } = require('./src/middlewares/middleware');
 // Middlewares = Funções executadas no meio da rota antes/depois de responder o cliente
 
-app.use(helmet()); // Executa o Helmet
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ["'self'"],
+        frameSrc: [
+            "'self'",
+            "https://www.google.com",
+            "https://www.google.com/maps",
+            "https://maps.google.com"
+        ],
+        scriptSrc: [
+            "'self'",
+            "'unsafe-inline'",
+            "https://www.google.com"
+        ]
+    }
+})); // Executa o Helmet
 
 app.use(express.urlencoded({ extended: true })); // Libera POST de formulários para dentro de nossa aplicação
 app.use(express.json()); // Faz parse de JSON para dentro da aplicação
