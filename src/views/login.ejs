@@ -1,0 +1,46 @@
+<%- include('includes/layout/head'); %>
+
+    <main class="min-h-screen bg-gradient-to-br from-black via-orange-500 to-black flex items-center justify-center">
+        <div
+            class="w-full max-w-md bg-zinc-900/90 backdrop-blur rounded-2xl shadow-2xl px-8 py-2 border border-zinc-800">
+            <div class="text-center mb-8">
+                <div class="flex justify-center">
+                    <img src="/assets/img/logo-loja.png" alt="Logo da Bicicletaria" class="h-52 w-52">
+                </div>
+                <p class="text-2xl font-bold bg-gradient-to-r from-orange-400 via-orange-500 to-red-600 bg-clip-text text-transparent">Painel de Controle</p>
+            </div>
+
+            <form class="form-login space-y-5" action="/admin" method="POST">
+                <input type="hidden" name="_csrf" value=<%=csrfToken %>>
+                <div>
+                    <label class="block text-sm text-zinc-400 mb-1">Usuário</label>
+                    <input type="text" placeholder="Nome de usuário"
+                        class="w-full px-4 py-3 rounded-lg bg-zinc-800 text-white placeholder-zinc-500 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition" />
+                </div>
+                <div>
+                    <label class="block text-sm text-zinc-400 mb-1">Senha</label>
+                    <input type="password" placeholder="••••••••"
+                        class="w-full px-4 py-3 rounded-lg bg-zinc-800 text-white placeholder-zinc-500 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition" />
+                </div>
+                <button type="submit"
+                    class="w-full py-3 rounded-lg bg-orange-500 text-black font-bold hover:bg-orange-400 active:scale-95 transition">
+                    Entrar
+                </button>
+            </form>
+
+            <div class="flex items-center my-6">
+                <div class="flex-1 h-px bg-zinc-700"></div>
+                <span class="px-3 text-zinc-500 text-sm">problemas com login</span>
+                <div class="flex-1 h-px bg-zinc-700"></div>
+            </div>
+
+            <button
+                class="w-full py-3 rounded-lg border border-zinc-700 text-zinc-300 hover:bg-zinc-800 transition mb-7">
+                Entrar em contato com suporte
+            </button>
+
+        </div>
+    </main>
+
+
+    <%- include('includes/layout/footer'); %>
