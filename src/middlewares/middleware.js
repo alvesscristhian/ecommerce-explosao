@@ -1,15 +1,30 @@
 exports.middlewareGlobal = (req, res, next) => {
-    res.locals.umaVariavelLocal = 'Valor da váriavel local'; // Envia essa variavel para vies
+    res.locals.errors = req.flash('errors');
+    res.locals.success = req.flash('success');
+    res.locals.user = req.session.user;
     next(); // Passa para próxima função
 };
 
 exports.checkCsurfError = (err, req, res, next) => {
-    if (err && err.code === 'EBADCSRFTOKEN') {
+    if (err.code === 'EBADCSRFTOKEN') {
         return res.render('404'); // Renderiza erro na tela e intercepta
     }
+
+    next();
 };
 
 exports.sendAllCsurf = (req, res, next) => {
     res.locals.csrfToken = req.csrfToken(); // Cria token e envia para views local
     next(); // Passa para a próxima
+};
+
+exports.loginRequired = (req, res, next) => {
+    if (!req.session.user) { // Se o usuario não tiver uma sessão ativa não roda
+        req.session.save(() => {
+            res.redirect('/');
+            return;
+        });
+        return;
+    }
+    next();
 };

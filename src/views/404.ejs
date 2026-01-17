@@ -1,0 +1,44 @@
+<%- include('includes/layout/head'); %>
+
+    <body
+        class="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-orange-900 flex items-center justify-center text-white">
+
+
+        <main class="text-center px-6">
+            <h1 class="text-[8rem] md:text-[10rem] font-extrabold tracking-tight text-orange-500 drop-shadow-lg">
+                404
+            </h1>
+
+
+            <p class="mt-4 text-xl md:text-2xl font-semibold">
+                Opa! Essa página não existe.
+            </p>
+
+
+            <p class="mt-2 text-zinc-300 max-w-md mx-auto">
+                Parece que você tentou acessar algo que foi removido, mudou de lugar ou nunca existiu.
+            </p>
+
+
+            <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/"
+                    class="px-6 py-3 rounded-xl bg-orange-500 text-black font-bold hover:bg-orange-400 transition">
+                    Voltar para Home
+                </a>
+
+
+                <button onclick="history.back()"
+                    class="px-6 py-3 rounded-xl border border-orange-500 text-orange-400 font-semibold hover:bg-orange-500 hover:text-black transition">
+                    Página anterior
+                </button>
+            </div>
+
+
+            <div class="mt-14 opacity-40 text-sm">
+                © 2026 • Explosão bike
+            </div>
+        </main>
+
+
+    </body>
+    <%- include('includes/layout/footer'); %>
