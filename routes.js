@@ -1,11 +1,12 @@
 const express = require('express'); // Importa express
 const route = express.Router(); // Importa rota
 
-const homeController = require('./src/controllers/homeController');
+const secController = require('./src/controllers/secController');
 const loginController = require('./src/controllers/loginController');
 
-// Rotas da home
-route.get('/', homeController.index);
+// Rotas das seções
+route.get('/', secController.index);
+route.get('/sobre-nos', secController.about);
 
 // Rotas de login
 route.get('/login', loginController.index);
