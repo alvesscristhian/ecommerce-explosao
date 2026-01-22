@@ -7,6 +7,7 @@ const loginController = require('./src/controllers/loginController');
 // Rotas das seções
 route.get('/', secController.index);
 route.get('/sobre-nos', secController.about);
+route.get('/contato', secController.contato);
 
 // Rotas de login
 route.get('/login', loginController.index);
