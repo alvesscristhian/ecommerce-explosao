@@ -3,6 +3,9 @@ const route = express.Router(); // Importa rota
 
 const secController = require('./src/controllers/secController');
 const loginController = require('./src/controllers/loginController');
+const adminController = require('./src/controllers/adminController');
+
+const { loginRequired } = require('./src/middlewares/middleware');
 
 // Rotas das seções
 route.get('/', secController.index);
@@ -13,6 +16,9 @@ route.get('/contato', secController.contato);
 route.get('/login', loginController.index);
 route.post('/login/register', loginController.register);
 route.post('/login/login', loginController.login);
+
+// Rotas de admin
+route.get('/admin', loginRequired, adminController.index)
 
 
 module.exports = route;

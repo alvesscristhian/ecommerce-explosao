@@ -40,12 +40,15 @@ app.use(express.static(path.resolve(__dirname, 'public'))); // Todos os arquivos
 
 const sessionOptions = session({ // Configurações de sessão
     secret: 'id991', // Assinar cookie de ID da sessão
-    store: new MongoStore({ mongoUrl: process.env.CONNECTIONSTRING }), // Local de Armazenamento
+    store: new MongoStore({ 
+        mongoUrl: process.env.CONNECTIONSTRING ,
+        ttl: 10 * 60
+    }), // Local de Armazenamento
     resave: false, // Salva novamente?
     saveUninitialized: false, // Salva vazia?
     cookie: { // Sessão do servidor cookie
-        //      1seg   1m   1h   1d  7d
-        maxAge: 1000 * 60 * 60 * 24 * 7, // Duração do cookie
+                // 1seg   1m   1h   1d  7d
+        maxAge: 1000 * 60 * 60 * 24 * 1, // Duração do cookie
         httpOnly: true // Acesso somente via HTTP?
     }
 });
