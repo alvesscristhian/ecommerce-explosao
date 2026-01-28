@@ -18,7 +18,8 @@ route.post('/login/register', loginController.register);
 route.post('/login/login', loginController.login);
 
 // Rotas de admin
-route.get('/admin', loginRequired, adminController.index)
+route.get('/admin', loginRequired, adminController.index);
+route.get('/admin/cadastrar', loginRequired, adminController.cadastrar);
 
 
 module.exports = route;
