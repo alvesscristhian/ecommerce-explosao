@@ -1,3 +1,4 @@
+const { type } = require('os');
 const path = require('path'); // CommonJS = Padrão Node.js
 
 module.exports = {
@@ -20,7 +21,14 @@ module.exports = {
         }, {
             test: /\.css$/,
             use: ['style-loader', 'css-loader', 'postcss-loader']
-        }]
+        }, {
+            test: /\.(png|jpe?g|gif|svg)$/i,
+            type: 'asset/resource',
+            generator: {
+                filename: '../img/[name][hash][ext]',
+            },
+        }
+        ]
     },
     devtool: 'source-map'
 };
