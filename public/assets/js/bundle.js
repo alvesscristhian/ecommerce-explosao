@@ -195,6 +195,25 @@ var images = {
 
 /***/ }),
 
+/***/ "./frontend/modules/setImage.js":
+/*!**************************************!*\
+  !*** ./frontend/modules/setImage.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ setImage)
+/* harmony export */ });
+function setImage(selecao, src) {
+  var el = document.querySelector(selecao);
+  if (!el) return;
+  el.src = src;
+}
+
+/***/ }),
+
 /***/ "./frontend/modules/switchMap.js":
 /*!***************************************!*\
   !*** ./frontend/modules/switchMap.js ***!
@@ -28154,23 +28173,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var regenerator_runtime_runtime__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(regenerator_runtime_runtime__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assets/css/style.css */ "./frontend/assets/css/style.css");
 /* harmony import */ var _modules_images__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/images */ "./frontend/modules/images.js");
-/* harmony import */ var _modules_buttons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/buttons */ "./frontend/modules/buttons.js");
-/* harmony import */ var _modules_switchMap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/switchMap */ "./frontend/modules/switchMap.js");
+/* harmony import */ var _modules_setImage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/setImage */ "./frontend/modules/setImage.js");
+/* harmony import */ var _modules_buttons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/buttons */ "./frontend/modules/buttons.js");
+/* harmony import */ var _modules_switchMap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/switchMap */ "./frontend/modules/switchMap.js");
 
 
 
 
-document.querySelector('.logo').src = _modules_images__WEBPACK_IMPORTED_MODULE_3__.images.logo;
-document.querySelector('.melhores-ano').src = _modules_images__WEBPACK_IMPORTED_MODULE_3__.images.melhoresAno;
-document.querySelector('.about-banner').src = _modules_images__WEBPACK_IMPORTED_MODULE_3__.images.aboutBanner;
-document.querySelector('.criancas-banner').src = _modules_images__WEBPACK_IMPORTED_MODULE_3__.images.criancasBanner;
-document.querySelector('.feminina-banner').src = _modules_images__WEBPACK_IMPORTED_MODULE_3__.images.femininaBanner;
-document.querySelector('.oficina-banner').src = _modules_images__WEBPACK_IMPORTED_MODULE_3__.images.oficinaBanner;
-document.querySelector('.principal-banner').src = _modules_images__WEBPACK_IMPORTED_MODULE_3__.images.principalBanner;
 
-(0,_modules_buttons__WEBPACK_IMPORTED_MODULE_4__["default"])();
+(0,_modules_setImage__WEBPACK_IMPORTED_MODULE_4__["default"])('.logo', _modules_images__WEBPACK_IMPORTED_MODULE_3__.images.logo);
+(0,_modules_setImage__WEBPACK_IMPORTED_MODULE_4__["default"])('.melhores-ano', _modules_images__WEBPACK_IMPORTED_MODULE_3__.images.melhoresAno);
+(0,_modules_setImage__WEBPACK_IMPORTED_MODULE_4__["default"])('.about-banner', _modules_images__WEBPACK_IMPORTED_MODULE_3__.images.aboutBanner);
+(0,_modules_setImage__WEBPACK_IMPORTED_MODULE_4__["default"])('.criancas-banner', _modules_images__WEBPACK_IMPORTED_MODULE_3__.images.criancasBanner);
+(0,_modules_setImage__WEBPACK_IMPORTED_MODULE_4__["default"])('.feminina-banner', _modules_images__WEBPACK_IMPORTED_MODULE_3__.images.femininaBanner);
+(0,_modules_setImage__WEBPACK_IMPORTED_MODULE_4__["default"])('.oficina-banner', _modules_images__WEBPACK_IMPORTED_MODULE_3__.images.oficinaBanner);
+(0,_modules_setImage__WEBPACK_IMPORTED_MODULE_4__["default"])('.principal-banner', _modules_images__WEBPACK_IMPORTED_MODULE_3__.images.principalBanner);
 
-(0,_modules_switchMap__WEBPACK_IMPORTED_MODULE_5__["default"])();
+(0,_modules_buttons__WEBPACK_IMPORTED_MODULE_5__["default"])();
+
+(0,_modules_switchMap__WEBPACK_IMPORTED_MODULE_6__["default"])();
 })();
 
 /******/ })()
