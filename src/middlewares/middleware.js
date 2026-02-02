@@ -20,7 +20,6 @@ exports.sendAllCsurf = (req, res, next) => {
 
 exports.loginRequired = (req, res, next) => {
     if (!req.session.user) { // Se o usuario não tiver uma sessão ativa não roda
-        req.flash('errors', 'Você precisa fazer login.');
         req.session.save(() => {
             res.render('404');
             return;
