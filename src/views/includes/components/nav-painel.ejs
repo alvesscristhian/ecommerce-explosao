@@ -2,8 +2,19 @@
     <h2 class="text-2xl font-bold text-orange-500 mb-10">Painel de controle</h2>
 
     <nav class="space-y-4">
-        <a href="/admin" class="block text-gray-300 hover:text-white hover:font-semibold">Dashboard</a>
-        <a href="/admin/cadastrar" class="block text-gray-300  hover:text-white hover:font-semibold">Cadastrar Bicicletas</a>
-        <a href="/" class="block text-gray-300 hover:text-white hover:font-semibold">Ver site</a>
+        <div class="flex items-center gap-3">
+            <img class="dashboard-svg h-8 w-auto" alt="Dashboard">
+            <a href="/admin" class="block text-gray-300 hover:text-white hover:font-semibold">Dashboard</a>
+        </div>
+        
+        <div class="flex items-center gap-3">
+            <img class="create-svg h-8 w-auto" alt="Cadastrar bikes">
+            <a href="/admin/cadastrar" class="block text-gray-300  hover:text-white hover:font-semibold">Adicionar Bicicletas</a>
+        </div>
+        
+        <div class="flex items-center gap-3">
+            <img class="visitar-svg h-8 w-auto" alt="Visitar site">
+            <a href="/" class="block text-gray-300 hover:text-white hover:font-semibold">Ver site</a>
+        </div>
     </nav>
 </aside>

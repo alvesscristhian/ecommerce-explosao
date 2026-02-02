@@ -12,6 +12,9 @@ setImage('.criancas-banner', images.criancasBanner);
 setImage('.feminina-banner', images.femininaBanner);
 setImage('.oficina-banner', images.oficinaBanner);
 setImage('.principal-banner', images.principalBanner);
+setImage('.dashboard-svg', images.dashboardSvg);
+setImage('.create-svg', images.createSvg);
+setImage('.visitar-svg', images.visitarSvg);
 
 import btnFunc from './modules/buttons';
 btnFunc();
