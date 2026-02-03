@@ -6,6 +6,7 @@ const loginController = require('./src/controllers/loginController');
 const adminController = require('./src/controllers/adminController');
 
 const { loginRequired } = require('./src/middlewares/middleware');
+const uploadImagem = require('./src/middlewares/uploadImagem');
 
 // Rotas das seções
 route.get('/', secController.index);
@@ -20,6 +21,7 @@ route.post('/login/login', loginController.login);
 // Rotas de admin
 route.get('/admin', loginRequired, adminController.index);
 route.get('/admin/cadastrar', loginRequired, adminController.bikes);
+route.post('/admin/bike', uploadImagem, adminController.cadastrar);
 
 
 module.exports = route;
