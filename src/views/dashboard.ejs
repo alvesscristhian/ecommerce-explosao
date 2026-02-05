@@ -1,0 +1,68 @@
+<%- include('includes/layout/head'); %>
+
+    <div class="flex min-h-screen bg-gray-100">
+
+        <%- include('includes/components/nav-painel'); %>
+
+            <main class="flex-1 p-8">
+                <%- include('includes/components/messages') %>
+
+                    <div class="flex justify-between items-center mb-8">
+                        <h1 class="text-3xl font-bold text-gray-800">Bicicletas cadastradas</h1>
+
+                        <a href="/admin/cadastrar"
+                            class="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition">+
+                            Nova Bike</a>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="bg-gray-100 text-gray-600 text-sm">
+                                <tr>
+                                    <th class="p-4">Modelo</th>
+                                    <th class="p-4">Aro</th>
+                                    <th class="p-4">Preço</th>
+                                    <th class="p-4">Status</th>
+                                    <th class="p-4">Ações</th>
+                                </tr>
+                            </thead>
+                            <% if (bikes.length > 0) { %>
+                            <tbody>
+                                <% bikes.forEach(bike => { %>
+                                    <tr class="border-t">
+                                        <td class="p-4 font-medium">
+                                            <%= bike.nome %>
+                                        </td>   
+                                        <td class="p-4">
+                                            Aro <%= bike.aro %>
+                                        </td>
+                                        <td class="p-4">
+                                            R$ <%= bike.preco.toFixed(2).replace('.', ',')%>
+                                        </td>
+                                        <td class="p-4">
+                                            <% if (!bike.ativo) { %>
+                                                <span class="text-green-600 font-semibold">Ativa</span>
+                                                <% } else { %>
+                                                    <span class="text-red-500 font-semibold">Inativa</span>
+                                                    <% } %>
+                                        </td>
+                                        <td class="p-4 space-x-2">
+                                            <a href="/admin/cadastrar/<%= bike._id %>" class="text-blue-600">
+                                                Editar
+                                            </a>
+                                            <a href="/admin/delete/<%= bike.id %>" class="text-red-500">
+                                                Excluir
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <% }) %>
+                            </tbody>
+                           <% } %>
+                        </table>
+                    </div>
+
+            </main>
+
+    </div>
+
+    <%- include('includes/layout/footer'); %>

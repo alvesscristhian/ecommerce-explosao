@@ -32,7 +32,7 @@ exports.login = async function (req, res) {
         req.flash('success', 'Seu login foi bem sucedido!');
         req.session.user = login.user; // Armazena dados do usuário em uma sessão
         req.session.save(function () {
-            return res.redirect('/admin');
+            return res.redirect('/admin/dashboard');
         });
     } catch (e) {
         console.log(e);

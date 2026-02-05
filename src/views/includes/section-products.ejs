@@ -8,48 +8,32 @@
         <button id="btn-26" class="btns text-xl text-orange-500 font-bold uppercase p-2">Aro 26</button>
         <button id="btn-29" class="btns text-xl text-orange-500 font-bold uppercase p-2">Aro 29</button>
     </div>
+
     <div class="bikes-table max-w-screen-lg self-center mx-auto grid gap-10 grid-cols-3">
-        <a href="#">
-            <div class="cards">
-                <div class="w-full aspect-square flex items-center justify-center">
-                    <img src="/assets/img/aro-12/black12.png" alt="Bicicleta aro 12 nathor"
-                        class="object-contain w-full h-full">
-                </div>
-                <div class="p-4 text-center space-y-2">
-                    <h3 class="font-semibold text-lg text-gray-800 uppercase">Bicicleta Aro 12 Nathor</h3>
-                    <p class="text-2xl font-bold text-gray-900">10x de 29,99 s/juros</p>
-                    <p class="text-base text-gray-500">ou à vista de R$265,00</p>
-                </div>
-            </div>
-        </a>
 
-        <a href="#">
-            <div class="cards">
-                <div class="w-full aspect-square flex items-center justify-center">
-                    <img src="/assets/img/aro-12/flower.png" alt="Bicicleta aro 12 flower"
-                        class="object-contain w-full h-full">
-                </div>
-                <div class="p-4 text-center space-y-2">
-                    <h3 class="font-semibold text-lg text-gray-800 uppercase">Bicicleta Aro 12 Flower</h3>
-                    <p class="text-2xl font-bold text-gray-900">10x de 29,99 s/juros</p>
-                    <p class="text-base text-gray-500">ou à vista de R$265,00</p>
-                </div>
-            </div>
-        </a>
+        <% let contador=0 %>
+            <% bike.forEach(item=> { %>
+                <% if (contador < 3) { %>
+                    <a href="#">
+                        <div class="cards">
+                            <div class="w-full h-64 flex items-center justify-center">
+                                <img src="<%= item.imagem %>" alt="<%= item.nome %>" class="w-full h-full">
+                            </div>
+                            <div class="p-4 text-center space-y-2">
+                                <h3 class="font-semibold text-lg text-gray-800 uppercase">
+                                    <%= item.nome %>
+                                </h3>
+                                <p class="text-2xl font-bold text-gray-900">10x de <%= (item.preco / 10).toFixed(2).replace('.', ',') %>
+                                        s/juros</p>
+                                <p class="text-base text-gray-500">ou à vista de R$<%= item.avista.toFixed(2).replace('.', ',') %>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    <% contador++ %>
+                        <% } %>
+                            <% }) %>
 
-        <a href="#">
-            <div class="cards">
-                <div class="w-full aspect-square flex items-center justify-center">
-                    <img src="/assets/img/aro-12/mechanic.png" alt="Bicicleta aro 12 mechanic"
-                        class="object-contain w-full h-full">
-                </div>
-                <div class="p-4 text-center space-y-2">
-                    <h3 class="font-semibold text-lg text-gray-800 uppercase">Bicicleta Aro 12 Mechanic</h3>
-                    <p class="text-2xl font-bold text-gray-900">10x de 29,99 s/juros</p>
-                    <p class="text-base text-gray-500">ou à vista de R$265,00</p>
-                </div>
-            </div>
-        </a>
     </div>
     <button class="self-center my-14 p-4 btn-ok"><span class="uppercase font-bold">Visualizar Tudo</span></button>
 </section>

@@ -17,22 +17,37 @@ const csrf = require('csurf'); // CSRF Tokens que criamos para nossos formulári
 const { middlewareGlobal, checkCsurfError, sendAllCsurf } = require('./src/middlewares/middleware');
 // Middlewares = Funções executadas no meio da rota antes/depois de responder o cliente
 
-app.use(helmet.contentSecurityPolicy({
-    directives: {
-        defaultSrc: ["'self'"],
-        frameSrc: [
-            "'self'",
-            "https://www.google.com",
-            "https://www.google.com/maps",
-            "https://maps.google.com"
-        ],
-        scriptSrc: [
-            "'self'",
-            "'unsafe-inline'",
-            "https://www.google.com"
-        ]
-    }
-})); // Executa o Helmet
+app.use(
+    helmet.contentSecurityPolicy({
+        directives: {
+            defaultSrc: ["'self'"],
+
+            imgSrc: [
+                "'self'",
+                "data:",
+                "https://res.cloudinary.com"
+            ],
+
+            frameSrc: [
+                "'self'",
+                "https://www.google.com",
+                "https://www.google.com/maps",
+                "https://maps.google.com"
+            ],
+
+            scriptSrc: [
+                "'self'",
+                "'unsafe-inline'",
+                "https://www.google.com"
+            ],
+
+            styleSrc: [
+                "'self'",
+                "'unsafe-inline'"
+            ]
+        }
+    })
+); // Executa o e configura Helmet
 
 app.use(express.urlencoded({ extended: true })); // Libera POST de formulários para dentro de nossa aplicação
 app.use(express.json()); // Faz parse de JSON para dentro da aplicação
@@ -40,15 +55,12 @@ app.use(express.static(path.resolve(__dirname, 'public'))); // Todos os arquivos
 
 const sessionOptions = session({ // Configurações de sessão
     secret: 'id991', // Assinar cookie de ID da sessão
-    store: new MongoStore({ 
-        mongoUrl: process.env.CONNECTIONSTRING ,
-        ttl: 10 * 60
-    }), // Local de Armazenamento
+    store: new MongoStore({ mongoUrl: process.env.CONNECTIONSTRING }), // Local de Armazenamento
     resave: false, // Salva novamente?
     saveUninitialized: false, // Salva vazia?
     cookie: { // Sessão do servidor cookie
-                // 1seg   1m   1h   1d  7d
-        maxAge: 1000 * 60 * 60 * 24 * 1, // Duração do cookie
+            // 1seg   1m   1h   1d  7d
+        maxAge: 1000 * 60 * 60 * 24 * 7, // Duração do cookie
         httpOnly: true // Acesso somente via HTTP?
     }
 });

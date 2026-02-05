@@ -16,6 +16,9 @@ setImage('.dashboard-svg', images.dashboardSvg);
 setImage('.create-svg', images.createSvg);
 setImage('.visitar-svg', images.visitarSvg);
 
+import formataPreco from './modules/replaceFloat'
+formataPreco();
+
 import btnFunc from './modules/buttons';
 btnFunc();
 

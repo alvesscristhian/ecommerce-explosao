@@ -6,9 +6,9 @@ exports.middlewareGlobal = (req, res, next) => {
 };
 
 exports.checkCsurfError = (err, req, res, next) => {
-    if (err.code === 'EBADCSRFTOKEN') {
-        return res.render('404'); // Renderiza erro na tela e intercepta
-    }
+    // if (err.code === 'EBADCSRFTOKEN') {
+    //     return res.status(403).send('Token CSRF inválido'); // Renderiza erro na tela e intercepta
+    // }
 
     next();
 };
