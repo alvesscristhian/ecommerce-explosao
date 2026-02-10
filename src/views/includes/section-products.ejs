@@ -14,10 +14,10 @@
         <% let contador=0 %>
             <% bike.forEach(item=> { %>
                 <% if (contador < 3) { %>
-                    <a href="#">
+                    <a href="#" class="bike-card" data-aro="<%= item.aro %>">
                         <div class="cards">
-                            <div class="w-full h-64 flex items-center justify-center">
-                                <img src="<%= item.imagem %>" alt="<%= item.nome.toUpperCase() %>" class="w-full h-full">
+                            <div class="w-full aspect-square flex items-center justify-center">
+                                <img src="<%= item.imagem %>" alt="<%= item.nome.toUpperCase() %>" class="object-contain w-full h-full">
                             </div>
                             <div class="p-4 text-center space-y-2">
                                 <h3 class="font-semibold text-lg text-gray-800 uppercase">

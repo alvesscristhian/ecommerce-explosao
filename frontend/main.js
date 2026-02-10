@@ -16,11 +16,12 @@ setImage('.dashboard-svg', images.dashboardSvg);
 setImage('.create-svg', images.createSvg);
 setImage('.visitar-svg', images.visitarSvg);
 
+import filtraAroProdutos from './modules/filtraAroProdutos'
+filtraAroProdutos();
+
 import formataPreco from './modules/replaceFloat'
 formataPreco();
 
-import btnFunc from './modules/buttons';
-btnFunc();
 
 import trocaMapa from './modules/switchMap';
 trocaMapa();
