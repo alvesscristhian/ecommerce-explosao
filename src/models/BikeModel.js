@@ -5,7 +5,7 @@ const BikeSchema = new mongoose.Schema({ // Cria uma instância de um schema par
     aro: { type: Number, required: true },
     preco: { type: Number, required: true },
     avista: { type: Number, required: true },
-    imagem: { type: String, required: true },
+    imagem: { type: String, required: false },
     descricao: { type: String, required: true },
     criadoEm: { type: Date, default: Date.now },
 });
@@ -56,8 +56,8 @@ class Bike {
         return bike;
     }
 
-    static async buscaBikes() {
-        const bikes = await BikeModel.find().sort({ criadoEm: -1 }); // 1 para ordem crescente e -1 para ordem decrescente
+    static async buscaBikes(sort) {
+        const bikes = await BikeModel.find().sort({ criadoEm: sort }); // 1 para ordem crescente e -1 para ordem decrescente
         return bikes;
     }
 

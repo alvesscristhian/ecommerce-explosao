@@ -8,7 +8,7 @@ exports.index = async (req, res) => {
         if (aro) {
             bike = await Bike.buscaPorAro(aro);
         } else {
-            bike = await Bike.buscaBikes();
+            bike = await Bike.buscaBikes(1);
         }
 
         res.render('index', { bike });

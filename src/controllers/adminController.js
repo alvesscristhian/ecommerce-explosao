@@ -4,7 +4,7 @@ const fs = require('fs');
 
 exports.index = async (req, res) => {
     try {
-        const bikes = await Bike.buscaBikes();
+        const bikes = await Bike.buscaBikes(-1);
         res.render('dashboard', { bikes });
     } catch (e) {
         console.log(e);
