@@ -68,7 +68,7 @@ exports.edit = async function (req, res) {
 
         req.flash('success', 'Produto editado com sucesso!');
         req.session.save(() => {
-            res.redirect(`/admin/cadastrar/${bike.bike._id}`);
+            res.redirect(`/admin/dashboard`);
             return;
         });
         return;

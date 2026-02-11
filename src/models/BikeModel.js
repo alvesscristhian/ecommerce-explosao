@@ -51,6 +51,11 @@ class Bike {
         return bike;
     };
 
+    static async buscaPorAro(aro) {
+        const bike = await BikeModel.find({ aro });
+        return bike;
+    }
+
     static async buscaBikes() {
         const bikes = await BikeModel.find().sort({ criadoEm: -1 }); // 1 para ordem crescente e -1 para ordem decrescente
         return bikes;

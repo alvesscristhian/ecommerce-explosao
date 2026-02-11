@@ -171,21 +171,12 @@ module.exports = __webpack_require__.p + "../img/visitar3599628e0a009b304b93.svg
 /***/ (() => {
 
 var buttons = document.querySelectorAll('.btns');
-var bikes = document.querySelectorAll('.bike-card');
 buttons.forEach(function (button) {
   button.addEventListener('click', function () {
     buttons.forEach(function (btn) {
       return btn.classList.remove('border-b-2', 'border-orange-500');
     });
     button.classList.add('border-b-2', 'border-orange-500');
-    bikes.forEach(function (bike) {
-      var aroBike = bike.dataset.aro;
-      if (aroBike === aroSelecionado) {
-        bike.style.display = '';
-      } else {
-        bike.style.display = 'none';
-      }
-    });
   });
 });
 
