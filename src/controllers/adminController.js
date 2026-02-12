@@ -5,16 +5,16 @@ const fs = require('fs');
 exports.index = async (req, res) => {
     try {
         const bikes = await Bike.buscaBikes(-1);
-        res.render('dashboard', { bikes });
+        return res.render('dashboard', { bikes });
     } catch (e) {
         console.log(e);
         return res.render('404');
     }
-    
+
 };
 
 exports.bikes = (req, res) => {
-    res.render('cadastro-bike', {
+    return res.render('cadastro-bike', {
         bike: {}
     });
 }
@@ -27,6 +27,7 @@ exports.cadastrar = async (req, res) => {
         };
 
         const result = await cloudinary.uploader.upload(req.file.path, {
+            transformation: [{ width: 1200, height: 1200, crop: "limit", quality: "auto" }],
             folder: "produtos"
         });
         req.body.imagem = result.secure_url;
@@ -43,7 +44,7 @@ exports.cadastrar = async (req, res) => {
     } catch (err) {
         console.error(err);
         req.flash('errors', "Erro ao salvar produto");
-        return res.render('404');
+        return res.redirect(`/admin/cadastrar`);
     }
 };
 
@@ -51,7 +52,7 @@ exports.editIndex = async function (req, res) {
     if (!req.params.id) return res.render('404');
     const bike = await Bike.buscaPorId(req.params.id);
     if (!bike) return res.render('404');
-    res.render('cadastro-bike', { bike });
+    return res.render('cadastro-bike', { bike });
 };
 
 exports.edit = async function (req, res) {
@@ -94,7 +95,7 @@ exports.delete = async function (req, res) {
     }
 }
 
-exports.logout = function(req, res) {
+exports.logout = function (req, res) {
     req.session.destroy(); // Destruir a sessão do usuário no servidor para logouts
-    res.redirect('/');
+    return res.redirect('/');
 }

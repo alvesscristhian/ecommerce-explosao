@@ -22,8 +22,6 @@
                 <% } else { %>
                     <form action="/admin/bike" method="POST" enctype="multipart/form-data" class="grid md:grid-cols-2 gap-6">
                 <% } %>
-
-                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                     <div>
                         <label class="block mb-1 text-gray-600">Nome do modelo</label>
                         <input value="<%= bike.nome %>" type="text" name="nome" required class="w-full border rounded-lg px-4 py-2" />
