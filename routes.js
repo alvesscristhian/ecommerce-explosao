@@ -12,6 +12,7 @@ const uploadImagem = require('./src/middlewares/uploadImagem');
 route.get('/', secController.index);
 route.get('/sobre-nos', secController.about);
 route.get('/contato', secController.contato);
+route.get('/produtos', secController.produtos);
 
 // Rotas de login
 route.get('/login', loginController.index);

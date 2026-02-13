@@ -25,3 +25,35 @@ exports.about = (req, res) => {
 exports.contato = (req, res) => {
     return res.render('contato');
 };
+
+exports.produtos = async (req, res) => {
+    try {
+        const { aro, ordenar } = req.query;
+
+        let bikes;
+
+        if (aro) {
+            bikes = await Bike.buscaPorAro(aro);
+        } else {
+            bikes = await Bike.buscaBikes(1);
+        }
+
+        if (ordenar === 'menor-preco') {
+            bikes.sort((a, b) => Number(a.preco) - Number(b.preco));
+        }
+
+        if (ordenar === 'maior-preco') {
+            bikes.sort((a, b) => Number(b.preco) - Number(a.preco));
+        }
+
+        res.render('produtos', {
+            produtos: bikes,
+            filtrosSelecionados: {
+                aro
+            }
+        });
+    } catch (e) {
+        console.log(e);
+        return res.render('404');
+    }
+};
