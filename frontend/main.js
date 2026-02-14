@@ -19,9 +19,5 @@ setImage('.visitar-svg', images.visitarSvg);
 import filtraAroProdutos from './modules/filtraAroProdutos'
 filtraAroProdutos();
 
-import formataPreco from './modules/replaceFloat'
-formataPreco();
-
-
 import trocaMapa from './modules/switchMap';
 trocaMapa();

@@ -1,11 +1,13 @@
 const Bike = require('../models/BikeModel'); // Importa o Model de bikes
 
-exports.index = async (req, res) => {
+// RENDERIZA TODAS AS SEÇÕES DA VIEW
+
+exports.index = async (req, res) => { // CONTROLLER HOME
     try {
-        const { aro } = req.query; // Extrai o aro selecionado do req.query
+        const { aro } = req.query; // RECEBE O ARO SELECIONADO PELA QUERY PARAMS DA URL
         let bike;
 
-        if (aro) {
+        if (aro) { // CHECA SE FOI SELECIONADO ALGUM FILTRO DE ARO
             bike = await Bike.buscaPorAro(aro);
         } else {
             bike = await Bike.buscaBikes(1);
@@ -18,7 +20,7 @@ exports.index = async (req, res) => {
     }
 };
 
-exports.about = (req, res) => {
+exports.about = (req, res) => { 
     return res.render('sobre');
 };
 
@@ -26,13 +28,13 @@ exports.contato = (req, res) => {
     return res.render('contato');
 };
 
-exports.produtos = async (req, res) => {
+exports.produtos = async (req, res) => { // CONTROLLER /PRODUTOS
     try {
-        const { aro, ordenar } = req.query;
+        const { aro, ordenar } = req.query; // RECEBE DO REQ.QUERY OS VALORES DO ARO/ORDENAR
 
         let bikes;
 
-        if (aro) {
+        if (aro) { // CHECA SE FOI SELECIONADO ALGUM FILTRO DE ARO
             bikes = await Bike.buscaPorAro(aro);
         } else {
             bikes = await Bike.buscaBikes(1);
@@ -49,7 +51,7 @@ exports.produtos = async (req, res) => {
         res.render('produtos', {
             produtos: bikes,
             filtrosSelecionados: {
-                aro
+                aro, ordenar
             }
         });
     } catch (e) {

@@ -74,8 +74,9 @@ app.use(csrf()); // Configurando CSRF Tokens
 
 // Nossos Middlewares
 app.use(middlewareGlobal); // MiddleWare Global
-app.use(checkCsurfError); // Middleware Error Token
 app.use(sendAllCsurf); // Middleware Envia Token
+app.use(checkCsurfError); // Middleware Error Token
+
 app.use(routes); // Usando nossas rotas
 
 app.on('pronto', () => { // Escuta o evento e começa a ouvir requisições

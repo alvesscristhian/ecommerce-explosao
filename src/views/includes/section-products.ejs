@@ -1,5 +1,8 @@
+<!-- SEÇÃO PREVIEW DE PRODUTOS -->
+
 <section id="bicicletas" class="flex flex-col animate-slide-in-left delay-300">
     <div class="flex justify-center gap-20 my-14">
+        <!-- QUERY PARAMS PARA FILTRAR POR CATEGORIAS -->
         <a href="?aro=12#bicicletas" id="btn-12" class="btns text-xl text-orange-500 font-bold uppercase p-2">Aro 12</a>
         <a href="?aro=16#bicicletas" id="btn-16" class="btns text-xl text-orange-500 font-bold uppercase p-2">Aro 16</a>
         <a href="?aro=20#bicicletas" id="btn-20" class="btns text-xl text-orange-500 font-bold uppercase p-2">Aro 20</a>
@@ -11,7 +14,7 @@
     <div class="bikes-table max-w-screen-lg self-center mx-auto grid gap-10 grid-cols-3">
 
         <% let contador = 0 %>
-            <% bike.forEach(item => { %>
+             <% bike.forEach(item => { %> <!-- ITERA E MOSTRA AS BIKES -->
                 <% if (contador < 3) { %>
                     <a href="#">
                         <div class="cards">

@@ -22,13 +22,14 @@
                 <% } else { %>
                     <form action="/admin/bike" method="POST" enctype="multipart/form-data" class="grid md:grid-cols-2 gap-6">
                 <% } %>
+                    <input type="hidden" name="_csrf" value=<%=csrfToken %>>
                     <div>
                         <label class="block mb-1 text-gray-600">Nome do modelo</label>
                         <input value="<%= bike.nome %>" type="text" name="nome" required class="w-full border rounded-lg px-4 py-2" />
                     </div>
 
                     <div>
-                        <label class="block mb-1 text-gray-600">Aro</label>
+                        <label for="aro" class="block mb-1 text-gray-600">Aro</label>
                         <select name="aro" value="<%= bike.aro %>" required class="w-full border rounded-lg px-4 py-2">
                             <option value="" disabled selected>Selecione uma opção...</option>
                             <option>12</option>
@@ -70,9 +71,7 @@
                             </svg>
                         </label>
                         <input src="<%= bike.imagem %>" type="file" id="imagem-bike" name="imagem" accept="image/*" required class="hidden"/>          
-                        <p id="nome-imagem" class="mt-2 text-sm text-gray-400 text-center">
-                            *
-                        </p>
+                        <p id="nome-imagem" class="mt-2 text-sm text-gray-400 text-center">*</p>
                     </div>
 
                     <div class="md:col-span-2">

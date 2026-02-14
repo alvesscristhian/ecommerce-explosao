@@ -1,11 +1,11 @@
-const Bike = require('../models/BikeModel'); // Importa o Model de bikes
+const Bike = require('../models/BikeModel');
 const cloudinary = require('../../configs/cloudinaryConfig');
 const fs = require('fs');
 
-exports.index = async (req, res) => {
+exports.index = async (req, res) => { // CONTROLLER PARA O DASHBOARD
     try {
-        const bikes = await Bike.buscaBikes(-1);
-        return res.render('dashboard', { bikes });
+        const bikes = await Bike.buscaBikes(-1); // BUSCA AS BIKES EM ORDEM DECRESCENTE
+        return res.render('dashboard', { bikes }); // ENVIA COMO VÁRIAVEL TODAS AS BIKES DA DATABASE
     } catch (e) {
         console.log(e);
         return res.render('404');
@@ -13,29 +13,30 @@ exports.index = async (req, res) => {
 
 };
 
-exports.bikes = (req, res) => {
+exports.bikes = (req, res) => { // CONTROLLER PARA A VIEW DE CADASTRO
     return res.render('cadastro-bike', {
-        bike: {}
+        bike: {} // ENVIA UM FORMULÁRIO VAZIO PARA EDITAR USANDO A MESMA VIEW
     });
 }
 
-exports.cadastrar = async (req, res) => {
+exports.cadastrar = async (req, res) => { // CONTROLLER PARA POSTAR OS DADOS DO FORMULÁRIO
     try {
-        if (!req.file) {
+        if (!req.file) { // CHECA SE O MULTER RECEBEU A IMAGEM
             req.flash('errors', 'Imagem não enviada');
             return res.redirect('/admin/dashboard');
         };
 
-        const result = await cloudinary.uploader.upload(req.file.path, {
+        const result = await cloudinary.uploader.upload(req.file.path, { // ARMAZENA A IMAGEM NO CLOUDINARY
             transformation: [{ width: 1200, height: 1200, crop: "limit", quality: "auto" }],
             folder: "produtos"
         });
-        req.body.imagem = result.secure_url;
+        
+        req.body.imagem = result.secure_url; // IMAGEM RECEBIDA POR UMA URL DA IMAGEM
 
-        fs.unlinkSync(req.file.path);
+        fs.unlinkSync(req.file.path); // APAGA AS IMAGENS DA /TMP
 
-        const bike = new Bike(req.body);
-        await bike.cadastrar();
+        const bike = new Bike(req.body); 
+        await bike.cadastrar(); // MÉTODO CADASTRAR NO MODEL
 
         req.flash('success', 'Seu produto foi criado com sucesso!');
         req.session.save(function () {
@@ -48,18 +49,18 @@ exports.cadastrar = async (req, res) => {
     }
 };
 
-exports.editIndex = async function (req, res) {
+exports.editIndex = async function (req, res) { // GET DO FORM DE EDIÇÃO
     if (!req.params.id) return res.render('404');
     const bike = await Bike.buscaPorId(req.params.id);
     if (!bike) return res.render('404');
     return res.render('cadastro-bike', { bike });
 };
 
-exports.edit = async function (req, res) {
-    try {
+exports.edit = async function (req, res) { // POST DO FORM DE EDIÇÃO
+    try { 
         if (!req.params.id) return res.render('404');
         const bike = new Bike(req.body);
-        await bike.edit(req.params.id);
+        await bike.edit(req.params.id); // EDITA A BICICLETA
 
         if (bike.errors.length > 0) {
             req.flash('errors', bike.errors);
@@ -79,11 +80,11 @@ exports.edit = async function (req, res) {
     }
 }
 
-exports.delete = async function (req, res) {
+exports.delete = async function (req, res) { // DELETE DO PRODUTO
     try {
         if (!req.params.id) return res.render('404');
 
-        const bike = await Bike.delete(req.params.id);
+        const bike = await Bike.delete(req.params.id); // DELETA A BICICLETA
         if (!bike) return res.render('404');
 
         req.flash('success', 'Produto deletado com sucesso!');
@@ -95,7 +96,7 @@ exports.delete = async function (req, res) {
     }
 }
 
-exports.logout = function (req, res) {
+exports.logout = function (req, res) { // LOGOUT DA SESSÃO
     req.session.destroy(); // Destruir a sessão do usuário no servidor para logouts
     return res.redirect('/');
 }

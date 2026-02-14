@@ -5,7 +5,7 @@ exports.index = (req, res) => {
     return;
 };
 
-exports.register = async function (req, res) {
+exports.register = async function (req, res) { // POST PARA REGISTRAR USUÁRIOS - ALTERAR FORM ACTION NA VIEW LOGIN
     try {
         const login = new Login(req.body);
         await login.register();
@@ -16,7 +16,7 @@ exports.register = async function (req, res) {
     }
 }
 
-exports.login = async function (req, res) {
+exports.login = async function (req, res) { // POST PARA LOGAR USUÁRIOS
     try {
         const login = new Login(req.body);
         await login.login();

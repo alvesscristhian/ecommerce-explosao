@@ -3,21 +3,24 @@
 @tailwind utilities;
 
 @layer components {
-  .cards {
+  /* ESTILIZAÇÃO PARA CARDS DE PRODUTOS */
+  .cards { 
     @apply border border-gray-300 flex flex-col transform transition-transform duration-300 ease-in-out hover:scale-110
   }
+  /* ESTILIZAÇÃO PARA ANIMAR BOTÕES */
   .btn-ok {
     @apply  bg-orange-500 rounded-full transform transition-transform duration-300 ease-in-out hover:scale-110
   }
+  /* ESTILIZAÇÃO PARA LIMITAR A LARGURA */
   .pixel {
     max-width: 470px;
   }
 }
 
+/* FAZ COM QUE OS BANNERS ROTEM INFINITAMENTE */
 .slider img {
   animation: slide 12s infinite;
 }
-
 .slider img:nth-child(1) {
   animation-delay: 0s;
 }
@@ -30,7 +33,6 @@
 .slider img:nth-child(4) {
   animation-delay: 9s;
 }
-
 @keyframes slide {
   0%   { opacity: 0; }
   10%  { opacity: 1; }
@@ -38,3 +40,5 @@
   40%  { opacity: 0; }
   100% { opacity: 0; }
 }
+
+/* FAZ COM QUE OS BANNERS ROTEM INFINITAMENTE */

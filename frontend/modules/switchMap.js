@@ -13,11 +13,11 @@ export default function trocaMapa() {
     ];
 
     let index = 0;
-    const mapa = document.querySelector('#mapFrame');
-    const back = document.querySelector('#back-map');
-    const next = document.querySelector('#next-map');
-    const loja = document.querySelector('#nome');
-    const endereco = document.querySelector('#endereco');
+    const mapa = document.querySelector('.map-frame');
+    const back = document.querySelector('.back-map');
+    const next = document.querySelector('.next-map');
+    const loja = document.querySelector('.nome');
+    const endereco = document.querySelector('.endereco');
 
     next.addEventListener('click', () => {
         mapa.src = maps[index].src;

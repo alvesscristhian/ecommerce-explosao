@@ -1,4 +1,6 @@
-<% if (errors.length > 0) { %>
+<!-- FLASH MESSAGES -->
+
+<% if (errors.length > 0) { %> <!-- MESSAGES DE ERROS -->
   <div class="my-4 animate-slide-down">
     <div class="rounded-md border-l-4 border-red-600 bg-red-500/90 px-4 py-2 text-white text-sm shadow">
       <% errors.forEach(erro => { %>
@@ -8,7 +10,7 @@
   </div>
 <% } %>
 
-<% if (success.length > 0) { %>
+<% if (success.length > 0) { %> <!-- MESSAGES DE SUCESSO -->
   <div class="my-4 animate-slide-down">
     <div class="rounded-md border-l-4 border-green-600 bg-green-500/90 px-4 py-2 text-white text-sm shadow">
       <% success.forEach(msg => { %>

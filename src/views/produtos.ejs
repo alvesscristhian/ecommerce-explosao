@@ -48,7 +48,7 @@
 
                 <form method="GET" action="/produtos">
                     <select name="ordenar"
-                        onchange="this.form.submit()"
+                        onchange="this.form.submit()" 
                         class="border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300">
 
                         <option value="">Ordenação padrão</option>
@@ -61,11 +61,11 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
+                <% let contador = 0 %>
                 <% produtos.forEach(item => { %>
-
+                    <% if (contador < 6) { %>
                     <a href="#">
                         <div class="cards bg-white rounded-xl shadow-sm">
-
                             <div class="w-full aspect-square flex items-center justify-center bg-gray-50 rounded-t-xl p-4">
                                 <img src="<%= item.imagem %>"
                                  alt="<%= item.nome.toUpperCase() %>"
@@ -73,7 +73,6 @@
                             </div>
 
                             <div class="p-4 text-center space-y-2">
-
                                 <h3 class="font-semibold text-lg text-gray-800 uppercase">
                                 <%= item.nome.toUpperCase() %>
                                 </h3>
@@ -87,12 +86,11 @@
                                 ou à vista de R$
                                 <%= item.avista.toFixed(2).replace('.', ',') %>
                                 </p>
-
                             </div>
-
                         </div>
                     </a>
-
+                    <% contador++ %>
+                    <% } %>
                 <% }) %>
 
             </div>
