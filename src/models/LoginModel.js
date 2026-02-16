@@ -15,7 +15,7 @@ class Login {
         this.user = null;
     }
 
-    async login() {
+    async login() { // FAZ O LOGIN DO USUÁRIO
         if (this.errors.length > 0) return;
         this.user = await LoginModel.findOne({ usuario: this.body.usuario }); // Busca no MongoDB um usuário com o mesmo nome informado no formulário especifica
 
@@ -31,7 +31,7 @@ class Login {
         }
     }
 
-    async register() {
+    async register() { // REGISTRA A BICICLETA 
         this.cleanUp();
         try {
             const salt = bcryptjs.genSaltSync(); // Gera um salt (string aleatória)

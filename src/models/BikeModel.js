@@ -1,6 +1,8 @@
 const mongoose = require('mongoose'); // Importa o mongoose
 
 const BikeSchema = new mongoose.Schema({ // Cria uma instância de um schema para o mongoose, servindo para declarar e modelar dados
+
+    // TIPOS DOS DADOS
     nome: { type: String, required: true },
     aro: { type: Number, required: true },
     preco: { type: Number, required: true },
@@ -19,16 +21,17 @@ class Bike {
         this.bike = null;
     }
 
-    async cadastrar() {
-        this.cleanUp();
+    async cadastrar() { // CADASTRA UMA BICICLETA NOVA
+        this.cleanUp(); // FUNÇÃO PARA CORTAR O CSURF E LIMPAR OS DADOS
         try {
-            this.bike = await BikeModel.create(this.body);
+            return this.bike = await BikeModel.create(this.body); // RECEBE OS DADOS DO FORM E CRIA NA BASE DE DADOS
         } catch(e) {
-            console.log(e);
+            this.errors.push('Erro ao cadastrar produtos'); 
+            return console.log(e);
         }
     }
 
-    async edit(id) {
+    async edit(id) { // EDITAR PRODUTOS
         if (typeof id !== 'string') return;
         if (this.errors.length > 0) return;
         this.bike = await BikeModel.findByIdAndUpdate(id, this.body, { new: true }); // Faz uma busca pelo ID e atualiza os dados do body
@@ -45,23 +48,23 @@ class Bike {
         };
     }
 
-    static async buscaPorId(id) {
+    static async buscaPorId(id) { // FILTRA BIKE POR ID
         if (typeof id !== 'string') return;
         const bike = await BikeModel.findById(id);
         return bike;
     };
 
-    static async buscaPorAro(aro) {
-        const bike = await BikeModel.find({ aro });
+    static async buscaPorAro(aro) { // FILTRA BIKE POR ARO
+        const bike = await BikeModel.find({ aro }); //
         return bike;
     }
 
-    static async buscaBikes(sort) {
+    static async buscaBikes(sort) { // FILTRA BIKES POR ORDEM CRESCENTE/DECRESCENTE
         const bikes = await BikeModel.find().sort({ criadoEm: sort }); // 1 para ordem crescente e -1 para ordem decrescente
         return bikes;
     }
 
-    static async delete(id) {
+    static async delete(id) { // DELETA A BICICLETA
         if (typeof id !== 'string') return;
         const bikes = await BikeModel.findOneAndDelete({ _id: id }); // Busca pelo ID e delete da base de dados
         return bikes;
