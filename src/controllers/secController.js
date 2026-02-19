@@ -60,7 +60,10 @@ exports.produtos = async (req, res) => { // CONTROLLER /PRODUTOS
 
 exports.bicicletas = async (req, res) => {
     try {
-        res.render('404')
+        const bike = await Bike.buscaPorId(req.params.id);
+        const bikes = await Bike.buscaBikes(-1);
+        
+        res.render('bike-info', { bike, bikes })
     }
     catch(e) {
         console.log(e);

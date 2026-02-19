@@ -1,0 +1,126 @@
+<%- include('includes/layout/head'); %>
+    <%- include('includes/components/navbar') %>
+
+        <body class="bg-zinc-100 text-zinc-900">
+            <!-- Produto -->
+            <main class="container mx-auto px-6 py-10">
+
+                <div class="grid md:grid-cols-2 gap-10 bg-white p-8 rounded-xl shadow-xl mb-10">
+
+                    <!-- Imagem -->
+                    <div>
+                        <div class="bg-zinc-200 rounded-lg p-6 flex items-center justify-center">
+                            <img src="<%= bike.imagem %>" alt="<%= bike.nome %>" class="max-h-96 object-contain">
+                        </div>
+                        <h2 class="text-black font-bold text-center pt-6 text-xl">Outras opções</h2>
+                        <div class="py-5 flex w-full h-40">
+                            <img src="<%= bike.imagem %>" alt="<%= bike.nome %>"
+                                class="max-h-full object-contain gap-2">
+                            <img src="<%= bike.imagem %>" alt="<%= bike.nome %>"
+                                class="max-h-full object-contain gap-2">
+                            <img src="<%= bike.imagem %>" alt="<%= bike.nome %>"
+                                class="max-h-full object-contain gap-2">
+                            <img src="<%= bike.imagem %>" alt="<%= bike.nome %>"
+                                class="max-h-full object-contain gap-2">
+                        </div>
+                    </div>
+
+                    <!-- Informações -->
+                    <div class="flex flex-col justify-between">
+
+                        <div>
+                            <h2 class="text-3xl font-extrabold mb-2">
+                                <%= bike.nome %>
+                            </h2>
+
+                            <p class="text-sm text-zinc-500 mb-6">
+                                Categoria: <span class="font-semibold">
+                                    <%= bike.categoria %>
+                                </span>
+                            </p>
+
+                            <p class="text-3xl font-bold text-orange-500 mb-4">
+                                R$ <%= bike.avista.toFixed(2).replace('.', ',' ) %>
+                                    <span class="text-black text-base">(ou 10x de R$ <%= (bike.preco /
+                                            10).toFixed(2).replace('.', ',' ) %>)</span>
+                            </p>
+
+                            <% if(bike.parcelamento) { %>
+                                <p class="text-sm text-zinc-600 mb-6">
+                                    ou <%= bike.parcelamento %>
+                                </p>
+                                <% } %>
+
+                                    <button
+                                        class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-lg transition shadow-md">FAZER
+                                        PEDIDO</button>
+
+                                    <div class="mt-8 border-b border-zinc-200">
+                                        <button
+                                            class="py-2 px-4 border-b-2 border-orange-500 font-semibold text-orange-500">Descrição</button>
+                                    </div>
+
+                                    <div class="mt-4 text-zinc-700 leading-relaxed">
+                                        <%= bike.descricao %>
+                                    </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-xl">
+
+                    <h2 class="text-2xl font-bold uppercase text-center mb-8">
+                        <span class="text-black">Produtos</span>
+                        <span class="text-orange-500">Relacionados</span>
+                    </h2>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+
+                        <% let contador = 0 %>
+                        <% bikes.forEach(item=> { %>
+                            <% if (contador < 3) { %>
+
+                            <a href="/produto/<%= item._id %>"
+                                class="group bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden border border-zinc-200">
+
+                                <!-- Imagem -->
+                                <div class="w-full h-56 flex items-center justify-center bg-zinc-100 p-4">
+                                    <img src="<%= item.imagem %>" alt="<%= item.nome %>"
+                                        class="object-contain h-full group-hover:scale-105 transition duration-300">
+                                </div>
+
+                                <!-- Info -->
+                                <div class="p-4 text-center space-y-2">
+
+                                    <h3 class="font-semibold text-lg text-black uppercase">
+                                        <%= item.nome %>
+                                    </h3>
+
+                                    <p class="text-xl font-bold text-orange-500">
+                                        10x de R$ <%= (item.preco / 10).toFixed(2).replace('.', ',' ) %>
+                                    </p>
+
+                                    <p class="text-sm text-zinc-500">
+                                        ou à vista de R$
+                                        <%= item.avista.toFixed(2).replace('.', ',' ) %>
+                                    </p>
+
+                                </div>
+
+                            </a>
+                            <% contador++ %> 
+                            <% } %>
+                            <% }) %>
+
+                    </div>
+
+                </div>
+
+
+            </main>
+
+        </body>
+
+        <%- include('includes/components/footer-index'); %>
+            <%- include('includes/layout/footer'); %>
