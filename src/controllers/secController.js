@@ -50,12 +50,19 @@ exports.produtos = async (req, res) => { // CONTROLLER /PRODUTOS
 
         res.render('produtos', {
             produtos: bikes,
-            filtrosSelecionados: {
-                aro, ordenar
-            }
+            filtrosSelecionados: { aro, ordenar }
         });
     } catch (e) {
         console.log(e);
         return res.render('404');
+    }
+};
+
+exports.bicicletas = async (req, res) => {
+    try {
+        res.render('404')
+    }
+    catch(e) {
+        console.log(e);
     }
 };

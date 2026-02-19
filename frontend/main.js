@@ -21,3 +21,6 @@ filtraAroProdutos();
 
 import trocaMapa from './modules/switchMap';
 trocaMapa();
+
+import confirmaSelect from './modules/confirmaSelect';
+confirmaSelect();

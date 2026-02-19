@@ -46,25 +46,25 @@
                     Exibindo <%= produtos.length %> resultados
                 </p>
 
-                <form method="GET" action="/produtos">
-                    <select name="ordenar"
-                        onchange="this.form.submit()" 
-                        class="border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300">
-
+                <form id="form-filtro" method="GET" action="/produtos">
+                    <select id="select-filter" name="ordenar" class="border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-300">
                         <option value="">Ordenação padrão</option>
-                        <option value="menor-preco">Menor preço</option>
-                        <option value="maior-preco">Maior preço</option>
+                        <option value="menor-preco"
+                            <%= filtrosSelecionados.ordenar === 'menor-preco' ? 'selected' : '' %>>
+                            Menor preço
+                        </option>
+                        <option value="maior-preco"
+                            <%= filtrosSelecionados.ordenar === 'maior-preco' ? 'selected' : '' %>>
+                            Maior preço
+                        </option>
                     </select>
                 </form>
 
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                <% let contador = 0 %>
                 <% produtos.forEach(item => { %>
-                    <% if (contador < 6) { %>
-                    <a href="#">
+                    <a href="produto/<%= item._id %>">
                         <div class="cards bg-white rounded-xl shadow-sm">
                             <div class="w-full aspect-square flex items-center justify-center bg-gray-50 rounded-t-xl p-4">
                                 <img src="<%= item.imagem %>"
@@ -89,10 +89,7 @@
                             </div>
                         </div>
                     </a>
-                    <% contador++ %>
-                    <% } %>
-                <% }) %>
-
+                    <% }) %>
             </div>
 
         </section>

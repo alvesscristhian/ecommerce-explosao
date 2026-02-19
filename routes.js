@@ -13,6 +13,7 @@ route.get('/', secController.index);
 route.get('/sobre-nos', secController.about);
 route.get('/contato', secController.contato);
 route.get('/produtos', secController.produtos);
+route.get('/produto/:id', secController.bicicletas)
 
 // Rotas de login
 route.get('/login', loginController.index);

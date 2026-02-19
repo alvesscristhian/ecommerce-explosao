@@ -19,17 +19,19 @@ export default function trocaMapa() {
     const loja = document.querySelector('.nome');
     const endereco = document.querySelector('.endereco');
 
-    next.addEventListener('click', () => {
-        mapa.src = maps[index].src;
-        index = (index + 1) % maps.length;
-        loja.innerText = maps[index].nome;
-        endereco.innerHTML = maps[index].endereco;
-    });
-    
-    back.addEventListener('click', () => {
-        mapa.src = maps[index].src;
-        index = (index - 1 + maps.length) % maps.length;
-        loja.innerHTML = maps[index].nome;
-        endereco.innerHTML = maps[index].endereco;
-    });
+    if (mapa) {
+        next.addEventListener('click', () => {
+            mapa.src = maps[index].src;
+            index = (index + 1) % maps.length;
+            loja.innerText = maps[index].nome;
+            endereco.innerHTML = maps[index].endereco;
+        });
+
+        back.addEventListener('click', () => {
+            mapa.src = maps[index].src;
+            index = (index - 1 + maps.length) % maps.length;
+            loja.innerHTML = maps[index].nome;
+            endereco.innerHTML = maps[index].endereco;
+        });
+    }
 };
