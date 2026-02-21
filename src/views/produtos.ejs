@@ -77,14 +77,14 @@
                                 <%= item.nome.toUpperCase() %>
                                 </h3>
 
-                                <p class="text-2xl font-bold text-gray-900">
+                                <p class="text-2xl font-bold text-orange-600">
                                 10x de R$
                                 <%= (item.preco / 10).toFixed(2).replace('.', ',') %>
                                 </p>
 
                                 <p class="text-base text-gray-500">
                                 ou à vista de R$
-                                <%= item.avista.toFixed(2).replace('.', ',') %>
+                                <%= item.avista.toLocaleString('pt-br', {minimumFractionDigits: 2}); %>
                                 </p>
                             </div>
                         </div>

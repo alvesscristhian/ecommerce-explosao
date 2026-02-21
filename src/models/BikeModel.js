@@ -64,6 +64,11 @@ class Bike {
         return bikes;
     }
 
+    static async buscaAleatorio(qtd) { // BUSCA BIKES ALEATORIAMENTE
+        const bikeRandom = await BikeModel.aggregate([{ $sample: { size: qtd } }]);
+        return bikeRandom
+    }
+
     static async delete(id) { // DELETA A BICICLETA
         if (typeof id !== 'string') return;
         const bikes = await BikeModel.findOneAndDelete({ _id: id }); // Busca pelo ID e delete da base de dados

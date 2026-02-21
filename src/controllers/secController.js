@@ -61,7 +61,7 @@ exports.produtos = async (req, res) => { // CONTROLLER /PRODUTOS
 exports.bicicletas = async (req, res) => {
     try {
         const bike = await Bike.buscaPorId(req.params.id);
-        const bikes = await Bike.buscaBikes(-1);
+        const bikes = await Bike.buscaAleatorio(3);
         
         res.render('bike-info', { bike, bikes })
     }
