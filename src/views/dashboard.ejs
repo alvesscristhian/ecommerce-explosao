@@ -37,7 +37,7 @@
                                             Aro <%= bike.aro %>
                                         </td>
                                         <td class="p-4">
-                                            R$ <%= bike.preco.toFixed(2).replace('.', ',')%>
+                                            R$ <%= bike.preco.toLocaleString('pt-br', {minimumFractionDigits: 2})%>
                                         </td>
                                         <td class="p-4">
                                             <% if (!bike.ativo) { %>

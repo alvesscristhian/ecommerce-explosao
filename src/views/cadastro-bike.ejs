@@ -28,9 +28,10 @@
                         <input value="<%= bike.nome %>" type="text" name="nome" required class="w-full border rounded-lg px-4 py-2" />
                     </div>
 
+
                     <div>
                         <label for="aro" class="block mb-1 text-gray-600">Aro</label>
-                        <select name="aro" value="<%= bike.aro %>" required class="w-full border rounded-lg px-4 py-2">
+                        <select name="aro" value="<%= bike.aro %>" <% if (!bike.id) { %> required <% } %> class="w-full border rounded-lg px-4 py-2">
                             <option value="" disabled selected>Selecione uma opção...</option>
                             <option>12</option>
                             <option>16</option>
@@ -41,20 +42,24 @@
                         </select>
                     </div>
 
+
                     <div>
                         <label class="block mb-1 text-gray-600">Valor Total</label>
                         <input value="<%= bike.preco %>" type="number" name="preco" id="preco" step="0.01" required class="w-full border rounded-lg px-4 py-2" />
                     </div>
+
 
                     <div>
                         <label class="block mb-1 text-gray-600">Preço (à vista)</label>
                         <input value="<%= bike.avista %>" type="number" name="avista" id="avista" step="0.01" required class="w-full border rounded-lg px-4 py-2" />
                     </div>
 
+
                     <div class="md:col-span-2">
                         <label class="block mb-1 text-gray-600">Descrição do produto</label>
                         <textarea name="descricao" rows="5" required class="w-full border rounded-lg px-4 py-2"><%= bike.descricao %></textarea>
                     </div>
+
 
                     <div class="md:col-span-2">
                         <label class="block mb-1 text-gray-600">
@@ -70,11 +75,12 @@
                                     d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 12v9m0-9l-3 3m3-3l3 3M12 3v9" />
                             </svg>
                         </label>
-                        <input src="<%= bike.imagem %>" type="file" id="imagem-bike" name="imagem" accept="image/*" required class="hidden"/>          
+                        <input src="<%= bike.imagem %>" type="file" id="imagem-bike" name="imagem" accept="image/*" <% if (!bike.id) { %> required <% } %>  class="hidden"/>          
                         <p id="nome-imagem" class="mt-2 text-sm text-gray-400 text-center">*</p>
                     </div>
 
                     <div class="md:col-span-2">
+
                     <% if (bike.id) { %>
                         <button type="submit"
                             class="bg-black text-white px-8 py-3 rounded-full hover:bg-orange-500 transition">
@@ -86,6 +92,7 @@
                             Cadastrar Bike
                         </button>
                     <% } %>
+
                     </div>
 
                 </form>

@@ -30,12 +30,12 @@ exports.cadastrar = async (req, res) => { // CONTROLLER PARA POSTAR OS DADOS DO 
             transformation: [{ width: 1200, height: 1200, crop: "limit", quality: "auto" }],
             folder: "produtos"
         });
-        
+
         req.body.imagem = result.secure_url; // IMAGEM RECEBIDA POR UMA URL DA IMAGEM
 
         fs.unlinkSync(req.file.path); // APAGA AS IMAGENS DA /TMP
 
-        const bike = new Bike(req.body); 
+        const bike = new Bike(req.body);
         await bike.cadastrar(); // MÉTODO CADASTRAR NO MODEL
 
         req.flash('success', 'Seu produto foi criado com sucesso!');
@@ -50,14 +50,20 @@ exports.cadastrar = async (req, res) => { // CONTROLLER PARA POSTAR OS DADOS DO 
 };
 
 exports.editIndex = async function (req, res) { // GET DO FORM DE EDIÇÃO
-    if (!req.params.id) return res.render('404');
-    const bike = await Bike.buscaPorId(req.params.id);
-    if (!bike) return res.render('404');
-    return res.render('cadastro-bike', { bike });
+    try {
+        if (!req.params.id) return res.render('404');
+        const bike = await Bike.buscaPorId(req.params.id);
+        if (!bike) return res.render('404');
+        return res.render('cadastro-bike', { bike });
+    } catch (e) {
+        console.log(e);
+        return res.render('404');
+    }
+    
 };
 
 exports.edit = async function (req, res) { // POST DO FORM DE EDIÇÃO
-    try { 
+    try {
         if (!req.params.id) return res.render('404');
         const bike = new Bike(req.body);
         await bike.edit(req.params.id); // EDITA A BICICLETA
