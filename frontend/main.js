@@ -24,3 +24,6 @@ trocaMapa();
 
 import confirmaSelect from './modules/confirmaSelect';
 confirmaSelect();
+
+import imagensCadastro from './modules/imagensCadastro';
+imagensCadastro();

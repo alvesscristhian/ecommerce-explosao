@@ -7,7 +7,7 @@ const BikeSchema = new mongoose.Schema({ // Cria uma instância de um schema par
     aro: { type: Number, required: true },
     preco: { type: Number, required: true },
     avista: { type: Number, required: true },
-    imagem: { type: String, required: false },
+    imagens: [String],
     descricao: { type: String, required: true },
     criadoEm: { type: Date, default: Date.now },
 });
@@ -43,7 +43,7 @@ class Bike {
             aro: this.body.aro,
             preco: this.body.preco,
             avista: this.body.avista,
-            imagem: this.body.imagem,
+            imagens: this.body.imagens,
             descricao: this.body.descricao
         };
     }

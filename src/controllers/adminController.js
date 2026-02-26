@@ -21,29 +21,38 @@ exports.bikes = (req, res) => { // CONTROLLER PARA A VIEW DE CADASTRO
 
 exports.cadastrar = async (req, res) => { // CONTROLLER PARA POSTAR OS DADOS DO FORMULÁRIO
     try {
-        if (!req.file) { // CHECA SE O MULTER RECEBEU A IMAGEM
+        if (!req.files || req.files.length === 0) { // CHECA SE O MULTER RECEBEU A IMAGEM
             req.flash('errors', 'Imagem não enviada');
             return res.redirect('/admin/dashboard');
         };
 
-        const result = await cloudinary.uploader.upload(req.file.path, { // ARMAZENA A IMAGEM NO CLOUDINARY
-            transformation: [{ width: 1200, height: 1200, crop: "limit", quality: "auto" }],
-            folder: "produtos"
-        });
+        const imagensUrls = []; // Cria um array com as urls das imagens
 
-        req.body.imagem = result.secure_url; // IMAGEM RECEBIDA POR UMA URL DA IMAGEM
+        for (const file of req.files) { // Faz um for em todos os arquivos enviados
+            const result = await cloudinary.uploader.upload(file.path, {
+                transformation: [
+                    { width: 1200, height: 1200, crop: "limit", quality: "auto" }
+                ],
+                folder: "produtos"
+            });
 
-        fs.unlinkSync(req.file.path); // APAGA AS IMAGENS DA /TMP
+            imagensUrls.push(result.secure_url); // Envia a imagem para o array
+
+            fs.unlinkSync(file.path);
+        }
+
+        req.body.imagens = imagensUrls;
 
         const bike = new Bike(req.body);
-        await bike.cadastrar(); // MÉTODO CADASTRAR NO MODEL
+        await bike.cadastrar();
 
         req.flash('success', 'Seu produto foi criado com sucesso!');
-        req.session.save(function () {
+        req.session.save(() => {
             return res.redirect(`/admin/dashboard`);
         });
-    } catch (err) {
-        console.error(err);
+
+    } catch (e) {
+        console.error(e);
         req.flash('errors', "Erro ao salvar produto");
         return res.redirect(`/admin/cadastrar`);
     }
@@ -59,7 +68,7 @@ exports.editIndex = async function (req, res) { // GET DO FORM DE EDIÇÃO
         console.log(e);
         return res.render('404');
     }
-    
+
 };
 
 exports.edit = async function (req, res) { // POST DO FORM DE EDIÇÃO
