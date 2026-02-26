@@ -9,19 +9,16 @@
 
                     <!-- Imagem -->
                     <div>
-                        <div class="bg-zinc-200 rounded-lg p-6 flex items-center justify-center">
-                            <img src="<%= bike.imagem %>" alt="<%= bike.nome %>" class="max-h-96 object-contain">
+                        <div id="zoom-container" class="w-full max-w-2xl h-[400px] overflow-hidden rounded-lg bg-zinc-200 flex items-center justify-center">
+                            <img id="imagem-principal" src="<%= bike.imagens[0] %>" alt="<%= bike.nome %>" class="h-full w-full object-contain transition-transform duration-300 ease-in-out hover:scale-110">
                         </div>
+
+
                         <h2 class="text-black font-bold text-center pt-6 text-xl">Outras opções</h2>
-                        <div class="py-5 flex w-full h-40">
-                            <img src="<%= bike.imagem %>" alt="<%= bike.nome %>"
-                                class="max-h-full object-contain gap-2">
-                            <img src="<%= bike.imagem %>" alt="<%= bike.nome %>"
-                                class="max-h-full object-contain gap-2">
-                            <img src="<%= bike.imagem %>" alt="<%= bike.nome %>"
-                                class="max-h-full object-contain gap-2">
-                            <img src="<%= bike.imagem %>" alt="<%= bike.nome %>"
-                                class="max-h-full object-contain gap-2">
+                        <div class="py-5 grid grid-cols-5 w-full h-40">
+                            <% bike.imagens.forEach((imagem, index)=> { %>
+                                <img src="<%= imagem %>" data-index="<%= index %>" class="thumb max-h-full object-contain cursor-pointer">
+                            <% }) %>
                         </div>
                     </div>
 
@@ -84,7 +81,7 @@
 
                                 <!-- Imagem -->
                                 <div class="w-full h-56 flex items-center justify-center bg-zinc-100 p-4">
-                                    <img src="<%= item.imagem %>" alt="<%= item.nome %>"
+                                    <img src="<%= item.imagens[0] %>" alt="<%= item.nome %>"
                                         class="object-contain h-full group-hover:scale-105 transition duration-300">
                                 </div>
 

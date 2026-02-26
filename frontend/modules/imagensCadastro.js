@@ -1,6 +1,6 @@
 export default function imagensCadastro() {
-    const input = document.getElementById('imagem-bike');
-    const texto = document.getElementById('nome-imagem');
+    const input = document.querySelector('#imagem-bike');
+    const texto = document.querySelector('#nome-imagem');
 
     if (input && texto) {
         input.addEventListener('change', () => {

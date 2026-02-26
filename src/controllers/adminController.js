@@ -26,20 +26,21 @@ exports.cadastrar = async (req, res) => { // CONTROLLER PARA POSTAR OS DADOS DO 
             return res.redirect('/admin/dashboard');
         };
 
-        const imagensUrls = []; // Cria um array com as urls das imagens
-
-        for (const file of req.files) { // Faz um for em todos os arquivos enviados
-            const result = await cloudinary.uploader.upload(file.path, {
+        const uploadPromises = req.files.map(file => // Faz o upload do cloudinary em todas as imagens
+            cloudinary.uploader.upload(file.path, {
                 transformation: [
                     { width: 1200, height: 1200, crop: "limit", quality: "auto" }
                 ],
                 folder: "produtos"
-            });
+            })
+        );
 
-            imagensUrls.push(result.secure_url); // Envia a imagem para o array
+        const results = await Promise.all(uploadPromises); // Resolve todas as promises paralelamente ganhando tempo
+        const imagensUrls = results.map(result => result.secure_url); // 
 
+        req.files.forEach(file => {
             fs.unlinkSync(file.path);
-        }
+        });
 
         req.body.imagens = imagensUrls;
 
@@ -47,13 +48,11 @@ exports.cadastrar = async (req, res) => { // CONTROLLER PARA POSTAR OS DADOS DO 
         await bike.cadastrar();
 
         req.flash('success', 'Seu produto foi criado com sucesso!');
-        req.session.save(() => {
-            return res.redirect(`/admin/dashboard`);
-        });
-
+        req.session.save(() => res.redirect('/admin/dashboard'));
     } catch (e) {
         console.error(e);
         req.flash('errors', "Erro ao salvar produto");
+        if (e.http_code === 400) req.flash('errors', 'Arquivo muito grande (+15MB). Comprima a imagem em iLoveImg: <a href="https://www.iloveimg.com/pt/comprimir-imagem" target="_blank">Acesse o site clicando aqui</a>');
         return res.redirect(`/admin/cadastrar`);
     }
 };

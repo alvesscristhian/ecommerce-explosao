@@ -17,7 +17,7 @@
                         Aro
                     </h3>
 
-                    <% [16,20,24,26,29].forEach(aro => { %>
+                    <% [12,16,20,24,26,29].forEach(aro => { %>
                         <a href="/produtos?aro=<%= aro %>"
                            class="block transition
                            <%= filtrosSelecionados?.aro == aro
@@ -67,7 +67,7 @@
                     <a href="produto/<%= item._id %>">
                         <div class="cards bg-white rounded-xl shadow-sm">
                             <div class="w-full aspect-square flex items-center justify-center bg-gray-50 rounded-t-xl p-4">
-                                <img src="<%= item.imagem %>"
+                                <img src="<%= item.imagens[0] %>"
                                  alt="<%= item.nome.toUpperCase() %>"
                                  class="object-contain w-full h-full">
                             </div>

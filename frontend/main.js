@@ -27,3 +27,6 @@ confirmaSelect();
 
 import imagensCadastro from './modules/imagensCadastro';
 imagensCadastro();
+
+import galeriaProduto from './modules/galeriaProduto';
+galeriaProduto();

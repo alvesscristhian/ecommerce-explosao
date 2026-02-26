@@ -4,7 +4,7 @@
   <div class="my-4 animate-slide-down">
     <div class="rounded-md border-l-4 border-red-600 bg-red-500/90 px-4 py-2 text-white text-sm shadow">
       <% errors.forEach(erro => { %>
-        <p class="leading-relaxed"><%= erro %></p>
+        <p class="leading-relaxed"><%- erro %></p>
       <% }) %>
     </div>
   </div>
@@ -14,7 +14,7 @@
   <div class="my-4 animate-slide-down">
     <div class="rounded-md border-l-4 border-green-600 bg-green-500/90 px-4 py-2 text-white text-sm shadow">
       <% success.forEach(msg => { %>
-        <p class="leading-relaxed"><%= msg %></p>
+        <p class="leading-relaxed"><%- msg %></p>
       <% }) %>
     </div>
   </div>
