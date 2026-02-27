@@ -1,6 +1,5 @@
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
 import './assets/css/style.css';
+
 import * as emailjs from '@emailjs/browser';
 
 import { images } from './modules/images';
@@ -30,7 +29,6 @@ import imagensCadastro from './modules/imagensCadastro';
 imagensCadastro();
 
 import galeriaProduto from './modules/galeriaProduto';
-import { set } from 'core-js/core/dict';
 galeriaProduto();
 
 
@@ -55,12 +53,12 @@ document.querySelector('#form-contato').addEventListener('submit', (e) => {
     emailjs.send(serviceId, templateId, formData)
         .then(() => {
             feedback.innerHTML = 'Sua mensagem foi enviada!'
-            feedback.classList.remove('hidden');
+            feedback.classList.add('cadastrado');
 
             setTimeout(() => {
                 feedback.innerHTML = '';
-                feedback.classList.add('hidden');
-            }, 2000)
+                feedback.classList.remove('cadastrado');
+            }, 3000)
         })
         .catch((e) => {
             console.error("Erro no envio", error);

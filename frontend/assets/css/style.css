@@ -17,6 +17,11 @@
   }
 }
 
+.cadastrado {
+    background-color: rgba(0, 209, 0, 0.774);
+    transition: 0.3s ease-in-out;
+}
+
 /* FAZ COM QUE OS BANNERS ROTEM INFINITAMENTE */
 .slider img {
   animation: slide 12s infinite;
