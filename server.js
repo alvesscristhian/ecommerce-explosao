@@ -22,6 +22,11 @@ app.use(
         directives: {
             defaultSrc: ["'self'"],
 
+            connectSrc: [
+                "'self'",
+                "https://api.emailjs.com"
+            ],
+
             imgSrc: [
                 "'self'",
                 "data:",
@@ -44,10 +49,15 @@ app.use(
             styleSrc: [
                 "'self'",
                 "'unsafe-inline'"
+            ],
+
+            formAction: [
+                "'self'",
+                "https://formsubmit.co"
             ]
         }
     })
-); // Executa o e configura Helmet
+);
 
 app.use(express.urlencoded({ extended: true })); // Libera POST de formulários para dentro de nossa aplicação
 app.use(express.json()); // Faz parse de JSON para dentro da aplicação
@@ -59,7 +69,7 @@ const sessionOptions = session({ // Configurações de sessão
     resave: false, // Salva novamente?
     saveUninitialized: false, // Salva vazia?
     cookie: { // Sessão do servidor cookie
-            // 1seg   1m   1h   1d  7d
+        // 1seg   1m   1h   1d  7d
         maxAge: 1000 * 60 * 60 * 24 * 7, // Duração do cookie
         httpOnly: true // Acesso somente via HTTP?
     }
