@@ -15,9 +15,9 @@
 
 
                         <h2 class="text-black font-bold text-center pt-6 text-xl">Outras opções</h2>
-                        <div class="py-5 grid grid-cols-5 w-full h-40">
+                        <div class="opcoes py-5 grid grid-cols-5 w-full h-40">
                             <% bike.imagens.forEach((imagem, index)=> { %>
-                                <img src="<%= imagem %>" data-index="<%= index %>" class="thumb max-h-full object-contain cursor-pointer">
+                                <img src="<%= imagem %>" data-index="<%= index %>" class="card thumb max-h-full object-contain cursor-pointer">
                             <% }) %>
                         </div>
                     </div>
