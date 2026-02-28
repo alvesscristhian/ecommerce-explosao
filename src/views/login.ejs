@@ -1,47 +1,49 @@
 <%- include('includes/layout/head'); %>
-    <main class="min-h-screen bg-gradient-to-br from-black via-orange-500 to-black flex items-center justify-center">
-        <div
-            class="w-full max-w-md bg-zinc-900/90 backdrop-blur rounded-2xl shadow-2xl px-8 py-2 border border-zinc-800">
-            <div class="text-center mb-8">
-                <div class="flex justify-center">
-                    <img alt="Logo da Bicicletaria" class="logo h-52 w-52">
+    <main class="min-h-screen bg-gradient-to-br from-black via-orange-500 to-black flex items-center justify-center p-4 sm:p-6">
+        <div class="w-full max-w-md bg-zinc-900/90 backdrop-blur-md rounded-2xl shadow-2xl p-6 sm:p-8 border border-zinc-800">
+            
+            <header class="text-center mb-8">
+                <div class="flex justify-center mb-4">
+                    <img alt="Logo da Bicicletaria" class="logo object-contain h-32 w-32 sm:h-40 sm:w-40 transition-all">
                 </div>
-                <p class="text-2xl font-bold bg-gradient-to-r from-orange-400 via-orange-500 to-red-600 bg-clip-text text-transparent">Painel de Controle</p>
+                <h1 class="text-2xl font-bold bg-gradient-to-r from-orange-400 via-orange-500 to-red-600 bg-clip-text text-transparent">
+                    Painel de Controle
+                </h1>
                 <%- include('includes/components/messages'); %>
+            </header>
 
-            </div>
-
-            <form class="form-login space-y-5" action="/login/login" method="POST">
-                <input type="hidden" name="_csrf" value=<%=csrfToken %>>
+            <form class="space-y-5" action="/login/login" method="POST">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                
                 <div>   
-                    <label class="block text-sm text-zinc-400 mb-1">Usuário</label>
-                    <input type="text" name="usuario" placeholder="Nome de usuário"
-                        class="w-full px-4 py-3 rounded-lg bg-zinc-800 text-white placeholder-zinc-500 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition" />
+                    <label for="usuario" class="block text-sm font-medium text-zinc-300 mb-1.5 cursor-pointer">Usuário</label>
+                    <input type="text" id="usuario" name="usuario" placeholder="Nome de usuário" required
+                        class="w-full px-4 py-3 rounded-lg bg-zinc-800/50 text-white placeholder-zinc-500 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 focus:bg-zinc-800 transition-colors" />
                 </div>
+                
                 <div>
-                    <label class="block text-sm text-zinc-400 mb-1">Senha</label>
-                    <input type="password" name="password" placeholder="••••••••"
-                        class="w-full px-4 py-3 rounded-lg bg-zinc-800 text-white placeholder-zinc-500 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition" />
+                    <label for="password" class="block text-sm font-medium text-zinc-300 mb-1.5 cursor-pointer">Senha</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required
+                        class="w-full px-4 py-3 rounded-lg bg-zinc-800/50 text-white placeholder-zinc-500 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 focus:bg-zinc-800 transition-colors" />
                 </div>
+                
                 <button type="submit"
-                    class="w-full py-3 rounded-lg bg-orange-500 text-black font-bold hover:bg-orange-400 active:scale-95 transition">
+                    class="w-full py-3 rounded-lg bg-orange-500 text-black font-bold hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-orange-600 focus:ring-offset-2 focus:ring-offset-zinc-900 active:scale-[0.98] transition-all">
                     Entrar
                 </button>
             </form>
 
-            <div class="flex items-center my-6">
-                <div class="flex-1 h-px bg-zinc-700"></div>
-                <span class="px-3 text-zinc-500 text-sm">problemas com login</span>
-                <div class="flex-1 h-px bg-zinc-700"></div>
+            <div class="flex items-center my-6" aria-hidden="true">
+                <div class="flex-1 h-px bg-zinc-800"></div>
+                <span class="px-3 text-zinc-400 text-xs sm:text-sm uppercase tracking-wider font-medium">Problemas com login?</span>
+                <div class="flex-1 h-px bg-zinc-800"></div>
             </div>
 
-            <button
-                class="w-full py-3 rounded-lg border border-zinc-700 text-zinc-300 hover:bg-zinc-800 transition mb-7">
+            <a href="/contato" 
+                class="flex items-center justify-center w-full py-3 rounded-lg border border-zinc-700 text-zinc-300 hover:bg-zinc-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-zinc-600 focus:ring-offset-2 focus:ring-offset-zinc-900 transition-colors">
                 Entrar em contato com suporte
-            </button>
+            </a>
 
         </div>
     </main>
-
-
-    <%- include('includes/layout/footer'); %>
+<%- include('includes/layout/footer'); %>
