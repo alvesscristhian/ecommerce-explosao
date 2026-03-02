@@ -1,48 +1,43 @@
-<!-- SEÇÃO SOBRE -->
-
-<section class="my-2">
-    <div class="w-full block bg-black h-12"></div>
-    <div class="h-full">
-        <div class="relative">
-            <h3 class="animate-slide-in-left delay-200 text-5xl text-white font-extrabold font-sans uppercase text-left absolute left-52 top-24 pixel">
-                Nós somos a melhor equipe para cuidar da <span class="text-orange-500">sua bicicleta</span></h3>
-            <div class="absolute left-52 top-80 animate-slide-in-left delay-500">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" class="my-4 mr-2">
-                        <circle cx="12" cy="12" r="12" fill="#ff7a18" />
-                        <path d="M7 12.5l3 3 7-7" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"
-                            stroke-linejoin="round"/>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" class="my-4 mr-2">
-                        <circle cx="12" cy="12" r="12" fill="#ff7a18" />
-                        <path d="M7 12.5l3 3 7-7" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"
-                            stroke-linejoin="round"/>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" class="my-4 mr-2">
-                        <circle cx="12" cy="12" r="12" fill="#ff7a18" />
-                        <path d="M7 12.5l3 3 7-7" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"
-                            stroke-linejoin="round"/>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" class="my-4 mr-2">
-                        <circle cx="12" cy="12" r="12" fill="#ff7a18" />
-                        <path d="M7 12.5l3 3 7-7" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"
-                            stroke-linejoin="round"/>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" class="my-4 mr-2">
-                        <circle cx="12" cy="12" r="12" fill="#ff7a18" />
-                        <path d="M7 12.5l3 3 7-7" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round"
-                            stroke-linejoin="round"/>
-                </svg>
-            </div>
-            <div class="absolute left-64 top-80 animate-slide-in-left delay-1000">
-                <p class="uppercase text-white text-lg font-semibold my-5 mr-2">Orçamento</p>
-                <p class="uppercase text-white text-lg font-semibold my-5 mr-2">Revisão</p>
-                <p class="uppercase text-white text-lg font-semibold my-5 mr-2">Limpeza</p>
-                <p class="uppercase text-white text-lg font-semibold my-5 mr-2">Suporte</p>
-                <p class="uppercase text-white text-lg font-semibold my-5 mr-2">Equipe Especializada</p>
-            </div>
-            <h4 class="absolute left-52 top-[620px] text-white font-extrabold font-sans text-xl uppercase border-b-2 border-white animate-slide-in-left delay-200">Mais de 20 anos de experiência em bicicletas!</h4>
-        </div>
-        <img class="about-banner" alt="Fundo da loja">
+<section class="relative w-full min-h-[600px] flex flex-col md:flex-row overflow-hidden bg-black">
+    
+    <div class="absolute inset-0 md:left-auto md:w-[55%] lg:w-[60%] z-0">
+        <div class="absolute inset-0 bg-black/70 md:hidden z-10"></div>
+        <img alt="Fachada da loja Grupo Explosão Bike" class="about-banner w-full h-full object-cover object-center">
     </div>
-    <div class="w-full block bg-black h-12"></div>
+
+    <div class="relative z-20 w-full md:w-[65%] lg:w-[55%] 
+                bg-gradient-to-r from-black via-orange-900 to-orange-600
+                md:[clip-path:polygon(0_0,100%_0,80%_100%,0_100%)]
+                p-8 sm:p-12 md:pr-24 lg:p-20 lg:pr-32
+                flex flex-col justify-center min-h-[500px]">
+        
+        <header class="max-w-xl animate-slide-in-left delay-200">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl text-white font-extrabold font-sans uppercase leading-tight">
+                Nós somos a <br>
+                melhor equipe <br>
+                para cuidar da <br>
+                <span class="text-orange-500">sua bicicleta</span>
+            </h2>
+        </header>
+
+        <ul class="mt-8 lg:mt-10 space-y-4 animate-slide-in-left delay-500">
+            <% const servicos = ["Orçamento", "Revisão", "Limpeza", "Suporte", "Equipe Especializada"]; %>
+            <% servicos.forEach(servico => { %>
+                <li class="flex items-center gap-3 group">
+                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6 lg:w-7 lg:h-7 flex-shrink-0">
+                        <circle cx="12" cy="12" r="12" fill="#ff7a18" />
+                        <path d="M7 12.5l3 3 7-7" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="uppercase text-white text-base lg:text-lg font-bold tracking-wide"><%= servico %></span>
+                </li>
+            <% }); %>
+        </ul>
+
+        <div class="mt-10 lg:mt-14 animate-slide-in-left delay-700">
+            <p class="inline-block text-white font-extrabold font-sans text-sm sm:text-base lg:text-lg uppercase border-b-2 border-white pb-1">
+                Mais de 20 anos de experiência em bicicletas!
+            </p>
+        </div>
+
+    </div>
 </section>

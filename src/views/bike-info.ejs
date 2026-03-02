@@ -2,12 +2,10 @@
     <%- include('includes/components/navbar') %>
 
         <body class="bg-zinc-100 text-zinc-900">
-            <!-- Produto -->
             <main class="container mx-auto px-6 py-10">
 
                 <div class="grid md:grid-cols-2 gap-10 bg-white p-8 rounded-xl shadow-xl mb-10">
 
-                    <!-- Imagem -->
                     <div>
                         <div id="zoom-container" class="w-full max-w-2xl h-[400px] overflow-hidden rounded-lg bg-zinc-200 flex items-center justify-center">
                             <img id="imagem-principal" src="<%= bike.imagens[0] %>" alt="<%= bike.nome %>" class="h-full w-full object-contain transition-transform duration-300 ease-in-out hover:scale-110">
@@ -22,7 +20,6 @@
                         </div>
                     </div>
 
-                    <!-- Informações -->
                     <div class="flex flex-col justify-between">
 
                         <div>
@@ -79,13 +76,11 @@
                             <a href="/produto/<%= item._id %>"
                                 class="group bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden border border-zinc-200">
 
-                                <!-- Imagem -->
                                 <div class="w-full h-56 flex items-center justify-center bg-zinc-100 p-4">
                                     <img src="<%= item.imagens[0] %>" alt="<%= item.nome %>"
                                         class="object-contain h-full group-hover:scale-105 transition duration-300">
                                 </div>
 
-                                <!-- Info -->
                                 <div class="p-4 text-center space-y-2">
 
                                     <h3 class="font-semibold text-lg text-black uppercase">

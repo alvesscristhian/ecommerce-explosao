@@ -1,27 +1,42 @@
-<!-- SEÇÃO LOCALIZAÇÃO -->
-
-<section class="my-5 flex justify-center">
-    <div class="my-5">
-        <h3 class="nome text-4xl font-bold uppercase my-3 text-center text-orange-600 animate-slide-in-right delay-300">Loja 1</h3>
-        <h4 class="endereco text-xl text-center font-semibold my-3 animate-slide-in-right delay-300">
+<section class="my-10 px-4 sm:px-6 w-full max-w-screen-2xl mx-auto flex flex-col items-center">
+    
+    <header class="text-center mb-6 sm:mb-8 w-full max-w-3xl">
+        <h2 class="nome text-3xl md:text-4xl font-bold uppercase text-orange-600 animate-slide-in-right delay-300">
+            Loja 1
+        </h2>
+        
+        <address class="endereco text-lg md:text-xl text-zinc-500 font-medium mt-2 md:mt-3 not-italic animate-slide-in-right delay-300">
             R. Dom Duarte da Costa, 304 - Vila Jockei Clube
-        </h4>
-        <div class="relative">
-            <button class="back-map absolute left-4 top-1/2 -translate-y-1/2 z-10
-                       bg-black/70 hover:bg-orange-600
-                       text-white text-3xl px-4 py-2 rounded-full transition">
-                &lt;
-            </button>
-            <button class="next-map absolute right-4 top-1/2 -translate-y-1/2 z-10
-                       bg-black/70 hover:bg-orange-600
-                       text-white text-3xl px-4 py-2 rounded-full transition">
-                &gt;
-            </button>
-            <iframe class="map-frame"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3646.3001530730758!2d-46.39642092384249!3d-23.94982407598018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce1b7a7c312c1d%3A0xe5e230dae59be411!2sExplos%C3%A3o%20Bike!5e0!3m2!1spt-BR!2sbr!4v1768277800399!5m2!1spt-BR!2sbr"
-                width="1905" height="450" style="border:0;" allowfullscreen loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
+        </address>
+    </header>
+
+    <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-zinc-800 bg-zinc-900 group">
+        
+        <button class="back-map absolute left-2 sm:left-4 md:left-6 top-1/2 -translate-y-1/2 z-20
+                       bg-black/80 hover:bg-orange-600 text-white p-2 sm:p-3 md:p-4 rounded-full
+                       focus:outline-none focus:ring-4 focus:ring-orange-500/50 transition-all duration-300
+                       backdrop-blur-sm transform active:scale-95 flex items-center justify-center"
+                aria-label="Ver loja anterior">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-8 md:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+
+        <button class="next-map absolute right-2 sm:right-4 md:right-6 top-1/2 -translate-y-1/2 z-20
+                       bg-black/80 hover:bg-orange-600 text-white p-2 sm:p-3 md:p-4 rounded-full
+                       focus:outline-none focus:ring-4 focus:ring-orange-500/50 transition-all duration-300
+                       backdrop-blur-sm transform active:scale-95 flex items-center justify-center"
+                aria-label="Ver próxima loja">
+            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-8 md:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+
+        <iframe class="map-frame w-full h-[350px] sm:h-[450px] lg:h-[600px] bg-zinc-800"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3646.434784590569!2d-46.412807923842664!3d-23.945060875802312!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce1b5060355f1b%3A0x1b9cc894f88ba6e5!2sGrupo%20Explos%C3%A3o%20Bike!5e0!3m2!1spt-BR!2sbr!4v1768279011235!5m2!1spt-BR!2sbr"
+            title="Mapa interativo com a localização da nossa loja"
+            style="border:0;" allowfullscreen loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
     </div>
 </section>

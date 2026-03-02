@@ -1,40 +1,61 @@
-<!-- SEÇÃO PREVIEW DE PRODUTOS -->
-
-<section id="bicicletas" class="flex flex-col animate-slide-in-left delay-300">
-    <div class="flex justify-center gap-20 my-14">
-        <!-- QUERY PARAMS PARA FILTRAR POR CATEGORIAS -->
-        <a href="?aro=12#bicicletas" id="btn-12" class="btns text-xl text-orange-500 font-bold uppercase p-2">Aro 12</a>
-        <a href="?aro=16#bicicletas" id="btn-16" class="btns text-xl text-orange-500 font-bold uppercase p-2">Aro 16</a>
-        <a href="?aro=20#bicicletas" id="btn-20" class="btns text-xl text-orange-500 font-bold uppercase p-2">Aro 20</a>
-        <a href="?aro=24#bicicletas" id="btn-24" class="btns text-xl text-orange-500 font-bold uppercase p-2">Aro 24</a>
-        <a href="?aro=26#bicicletas" id="btn-26" class="btns text-xl text-orange-500 font-bold uppercase p-2">Aro 26</a>
-        <a href="?aro=29#bicicletas" id="btn-29" class="btns text-xl text-orange-500 font-bold uppercase p-2">Aro 29</a>
-    </div>
-
-    <div class="bikes-table max-w-screen-lg self-center mx-auto grid gap-10 grid-cols-3">
-
-        <% let contador = 0 %>
-             <% bike.forEach(item => { %> <!-- ITERA E MOSTRA AS BIKES -->
-                <% if (contador < 3) { %>
-                    <a href="produto/<%= item._id %>">
-                        <div class="cards">
-                            <div class="w-full aspect-square flex items-center justify-center">
-                                <img src="<%= item.imagens[0] %>" alt="<%= item.nome.toUpperCase() %>" class="object-contain w-full h-full">
-                            </div>
-                            <div class="p-4 text-center space-y-2">
-                                <h3 class="font-semibold text-lg text-gray-800 uppercase">
-                                    <%= item.nome.toUpperCase() %>
-                                </h3>
-                                <p class="text-2xl font-bold text-orange-600">10x de <%= (item.preco / 10).toFixed(2).replace('.', ',') %> s/juros</p>
-                                <p class="text-base text-gray-500">ou à vista por R$ <%= item.avista.toLocaleString('pt-br', {minimumFractionDigits: 2}) %>
-                                </p>
-                            </div>
-                        </div>
+<section id="bicicletas" class="flex flex-col animate-slide-in-left delay-300 px-4 sm:px-6">
+    
+    <nav aria-label="Filtro de categorias por tamanho do aro" class="my-8 md:my-14 w-full overflow-x-auto hide-scrollbar">
+        <ul class="flex justify-start md:justify-center gap-4 sm:gap-8 md:gap-12 min-w-max pb-4 md:pb-0 px-4 md:px-0">
+            <% const aros = [12, 16, 20, 24, 26, 29]; %>
+            <% aros.forEach(aro => { %>
+                <li>
+                    <a href="?aro=<%= aro %>#bicicletas" id="btn-<%= aro %>" 
+                       class="text-lg md:text-xl text-orange-500 font-bold uppercase p-2 hover:text-orange-600 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 rounded-lg whitespace-nowrap">
+                        Aro <%= aro %>
                     </a>
-                    <% contador++ %>
-                <% } %>
+                </li>
+            <% }); %>
+        </ul>
+    </nav>
+
+    <div class="w-full max-w-screen-lg mx-auto grid gap-6 md:gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+
+        <% if (typeof bike !== 'undefined' && bike.length > 0) { %>
+            <% bike.slice(0, 3).forEach(item => { %>
+                <article class="group relative bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col">
+                    
+                    <a href="produto/<%= item._id %>" class="absolute inset-0 z-10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500" aria-label="Ver detalhes de <%= item.nome %>">
+                        <span class="sr-only">Comprar <%= item.nome %></span>
+                    </a>
+
+                    <div class="w-full aspect-square flex items-center justify-center bg-gray-50 p-6 overflow-hidden">
+                        <img src="<%= item.imagens[0] %>" alt="Bicicleta <%= item.nome %>" class="object-contain w-full h-full group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    
+                    <div class="p-5 text-center flex-1 flex flex-col justify-between space-y-4">
+                        <h3 class="font-semibold text-lg text-gray-800 uppercase line-clamp-2" title="<%= item.nome %>">
+                            <%= item.nome %>
+                        </h3>
+                        
+                        <div class="space-y-1 mt-auto">
+                            <p class="text-2xl font-bold text-orange-600">
+                                10x de <%= (item.preco / 10).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) %>
+                            </p>
+                            <p class="text-sm text-gray-500 font-medium">
+                                ou à vista <%= item.avista.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) %>
+                            </p>
+                        </div>
+                    </div>
+                </article>
             <% }) %>
+        <% } else { %>
+            <div class="col-span-full text-center py-12 text-gray-500">
+                Nenhum modelo disponível no momento.
+            </div>
+        <% } %>
 
     </div>
-    <a href="/produtos" class="self-center my-14 p-4 btn-ok cursor-pointer"><span class="uppercase font-bold">Visualizar Tudo</span></a>
+
+    <div class="flex justify-center mt-12 mb-14 w-full">
+        <a href="/produtos" class="px-8 py-4 bg-orange-500 text-black rounded-lg shadow-md hover:bg-orange-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-600 focus:ring-offset-2 transition-all active:scale-[0.98] uppercase font-bold text-sm tracking-wider w-full max-w-xs text-center">
+            Visualizar Tudo
+        </a>
+    </div>
+
 </section>

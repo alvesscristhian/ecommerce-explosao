@@ -14,9 +14,6 @@ setImage('.dashboard-svg', images.dashboardSvg);
 setImage('.create-svg', images.createSvg);
 setImage('.visitar-svg', images.visitarSvg);
 
-import filtraAroProdutos from './modules/filtraAroProdutos'
-filtraAroProdutos();
-
 import trocaMapa from './modules/switchMap';
 trocaMapa();
 

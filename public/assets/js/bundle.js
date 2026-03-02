@@ -608,49 +608,6 @@ function confirmaSelect() {
 
 /***/ },
 
-/***/ "./frontend/modules/filtraAroProdutos.js"
-/*!***********************************************!*\
-  !*** ./frontend/modules/filtraAroProdutos.js ***!
-  \***********************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ filtraAroProdutos)
-/* harmony export */ });
-/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array.for-each.js */ "./node_modules/core-js/modules/es.array.for-each.js");
-/* harmony import */ var core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_for_each_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
-/* harmony import */ var core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_object_to_string_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each.js */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
-/* harmony import */ var core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each_js__WEBPACK_IMPORTED_MODULE_2__);
-
-
-
-function filtraAroProdutos() {
-  var buttons = document.querySelectorAll('.btns');
-  document.addEventListener('DOMContentLoaded', function () {
-    var activeButtonId = localStorage.getItem('activeButton');
-    if (activeButtonId) {
-      var activeBtn = document.getElementById(activeButtonId);
-      if (activeBtn) {
-        activeBtn.classList.add('border-b-2', 'border-orange-500');
-      }
-    }
-  });
-  buttons.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      buttons.forEach(function (b) {
-        return b.classList.remove('border-b-2', 'border-orange-500');
-      });
-      btn.classList.add('border-b-2', 'border-orange-500');
-      localStorage.setItem('activeButton', btn.id);
-    });
-  });
-}
-
-/***/ },
-
 /***/ "./frontend/modules/galeriaProduto.js"
 /*!********************************************!*\
   !*** ./frontend/modules/galeriaProduto.js ***!
@@ -1486,11 +1443,25 @@ video {
 .pixel {
     max-width: 470px;
   }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
 .absolute {
   position: absolute;
 }
 .relative {
   position: relative;
+}
+.inset-0 {
+  inset: 0px;
 }
 .left-4 {
   left: 1rem;
@@ -1516,8 +1487,23 @@ video {
 .top-\\[620px\\] {
   top: 620px;
 }
+.left-2 {
+  left: 0.5rem;
+}
+.right-2 {
+  right: 0.5rem;
+}
 .z-10 {
   z-index: 10;
+}
+.z-20 {
+  z-index: 20;
+}
+.z-0 {
+  z-index: 0;
+}
+.col-span-full {
+  grid-column: 1 / -1;
 }
 .mx-auto {
   margin-left: auto;
@@ -1547,8 +1533,19 @@ video {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.my-10 {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
 .mb-1 {
   margin-bottom: 0.25rem;
+}
+.mb-1\\.5 {
+  margin-bottom: 0.375rem;
 }
 .mb-10 {
   margin-bottom: 2.5rem;
@@ -1567,9 +1564,6 @@ video {
 }
 .mb-6 {
   margin-bottom: 1.5rem;
-}
-.mb-7 {
-  margin-bottom: 1.75rem;
 }
 .mb-8 {
   margin-bottom: 2rem;
@@ -1592,8 +1586,23 @@ video {
 .mt-8 {
   margin-top: 2rem;
 }
-.mb-1\\.5 {
-  margin-bottom: 0.375rem;
+.mb-14 {
+  margin-bottom: 3.5rem;
+}
+.mt-12 {
+  margin-top: 3rem;
+}
+.mt-auto {
+  margin-top: auto;
+}
+.mt-10 {
+  margin-top: 2.5rem;
+}
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 .block {
   display: block;
@@ -1628,9 +1637,6 @@ video {
 .h-40 {
   height: 10rem;
 }
-.h-52 {
-  height: 13rem;
-}
 .h-56 {
   height: 14rem;
 }
@@ -1655,8 +1661,8 @@ video {
 .h-px {
   height: 1px;
 }
-.h-60 {
-  height: 15rem;
+.h-\\[350px\\] {
+  height: 350px;
 }
 .max-h-full {
   max-height: 100%;
@@ -1664,11 +1670,17 @@ video {
 .min-h-screen {
   min-height: 100vh;
 }
+.min-h-\\[500px\\] {
+  min-height: 500px;
+}
+.min-h-\\[600px\\] {
+  min-height: 600px;
+}
 .w-10\\/12 {
   width: 83.333333%;
 }
-.w-52 {
-  width: 13rem;
+.w-32 {
+  width: 8rem;
 }
 .w-6 {
   width: 1.5rem;
@@ -1682,8 +1694,12 @@ video {
 .w-full {
   width: 100%;
 }
-.w-32 {
-  width: 8rem;
+.w-8 {
+  width: 2rem;
+}
+.min-w-max {
+  min-width: -moz-max-content;
+  min-width: max-content;
 }
 .max-w-2xl {
   max-width: 42rem;
@@ -1712,11 +1728,26 @@ video {
 .max-w-xl {
   max-width: 36rem;
 }
+.max-w-xs {
+  max-width: 20rem;
+}
+.max-w-3xl {
+  max-width: 48rem;
+}
+.max-w-screen-2xl {
+  max-width: 1536px;
+}
 .flex-1 {
   flex: 1 1 0%;
 }
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
 .-translate-y-1\\/2 {
   --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 @keyframes slideDown {
@@ -1803,6 +1834,9 @@ video {
 .items-center {
   align-items: center;
 }
+.justify-start {
+  justify-content: flex-start;
+}
 .justify-center {
   justify-content: center;
 }
@@ -1861,6 +1895,11 @@ video {
   margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
 }
+.space-y-1 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+}
 .self-center {
   align-self: center;
 }
@@ -1869,6 +1908,9 @@ video {
 }
 .overflow-x-auto {
   overflow-x: auto;
+}
+.whitespace-nowrap {
+  white-space: nowrap;
 }
 .break-all {
   word-break: break-all;
@@ -1901,6 +1943,10 @@ video {
 .border-2 {
   border-width: 2px;
 }
+.border-y-\\[48px\\] {
+  border-top-width: 48px;
+  border-bottom-width: 48px;
+}
 .border-b {
   border-bottom-width: 1px;
 }
@@ -1912,6 +1958,9 @@ video {
 }
 .border-t {
   border-top-width: 1px;
+}
+.border-b-4 {
+  border-bottom-width: 4px;
 }
 .border-gray-800 {
   --tw-border-opacity: 1;
@@ -1951,6 +2000,14 @@ video {
 .border-zinc-800 {
   --tw-border-opacity: 1;
   border-color: rgb(39 39 42 / var(--tw-border-opacity, 1));
+}
+.border-gray-100 {
+  --tw-border-opacity: 1;
+  border-color: rgb(243 244 246 / var(--tw-border-opacity, 1));
+}
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity, 1));
 }
 .bg-black {
   --tw-bg-opacity: 1;
@@ -1993,13 +2050,12 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(228 228 231 / var(--tw-bg-opacity, 1));
 }
-.bg-zinc-700 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(63 63 70 / var(--tw-bg-opacity, 1));
-}
 .bg-zinc-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(39 39 42 / var(--tw-bg-opacity, 1));
+}
+.bg-zinc-800\\/50 {
+  background-color: rgb(39 39 42 / 0.5);
 }
 .bg-zinc-900\\/60 {
   background-color: rgb(24 24 27 / 0.6);
@@ -2007,8 +2063,12 @@ video {
 .bg-zinc-900\\/90 {
   background-color: rgb(24 24 27 / 0.9);
 }
-.bg-zinc-800\\/50 {
-  background-color: rgb(39 39 42 / 0.5);
+.bg-black\\/80 {
+  background-color: rgb(0 0 0 / 0.8);
+}
+.bg-zinc-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(24 24 27 / var(--tw-bg-opacity, 1));
 }
 .bg-gradient-to-br {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
@@ -2036,6 +2096,11 @@ video {
   --tw-gradient-to: rgb(9 9 11 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
+.from-black\\/90 {
+  --tw-gradient-from: rgb(0 0 0 / 0.9) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
 .via-orange-500 {
   --tw-gradient-to: rgb(249 115 22 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), #f97316 var(--tw-gradient-via-position), var(--tw-gradient-to);
@@ -2043,6 +2108,14 @@ video {
 .via-zinc-900 {
   --tw-gradient-to: rgb(24 24 27 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), #18181b var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+.via-black\\/70 {
+  --tw-gradient-to: rgb(0 0 0 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), rgb(0 0 0 / 0.7) var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+.via-orange-900 {
+  --tw-gradient-to: rgb(124 45 18 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), #7c2d12 var(--tw-gradient-via-position), var(--tw-gradient-to);
 }
 .to-black {
   --tw-gradient-to: #000 var(--tw-gradient-to-position);
@@ -2062,6 +2135,9 @@ video {
 .to-zinc-800 {
   --tw-gradient-to: #27272a var(--tw-gradient-to-position);
 }
+.to-transparent {
+  --tw-gradient-to: transparent var(--tw-gradient-to-position);
+}
 .bg-clip-text {
   -webkit-background-clip: text;
           background-clip: text;
@@ -2074,6 +2150,10 @@ video {
   -o-object-fit: cover;
      object-fit: cover;
 }
+.object-center {
+  -o-object-position: center;
+     object-position: center;
+}
 .p-2 {
   padding: 0.5rem;
 }
@@ -2085,6 +2165,9 @@ video {
 }
 .p-8 {
   padding: 2rem;
+}
+.p-5 {
+  padding: 1.25rem;
 }
 .px-3 {
   padding-left: 0.75rem;
@@ -2134,8 +2217,22 @@ video {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
 .pt-6 {
   padding-top: 1.5rem;
+}
+.pb-4 {
+  padding-bottom: 1rem;
+}
+.pb-1 {
+  padding-bottom: 0.25rem;
 }
 .text-left {
   text-align: left;
@@ -2200,8 +2297,14 @@ video {
 .uppercase {
   text-transform: uppercase;
 }
+.not-italic {
+  font-style: normal;
+}
 .leading-relaxed {
   line-height: 1.625;
+}
+.leading-tight {
+  line-height: 1.25;
 }
 .tracking-tight {
   letter-spacing: -0.025em;
@@ -2303,10 +2406,6 @@ video {
   --tw-text-opacity: 1;
   color: rgb(244 244 245 / var(--tw-text-opacity, 1));
 }
-.text-zinc-200 {
-  --tw-text-opacity: 1;
-  color: rgb(228 228 231 / var(--tw-text-opacity, 1));
-}
 .placeholder-gray-400::-moz-placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(156 163 175 / var(--tw-placeholder-opacity, 1));
@@ -2322,30 +2421,6 @@ video {
 .placeholder-zinc-500::placeholder {
   --tw-placeholder-opacity: 1;
   color: rgb(113 113 122 / var(--tw-placeholder-opacity, 1));
-}
-.placeholder-zinc-700::-moz-placeholder {
-  --tw-placeholder-opacity: 1;
-  color: rgb(63 63 70 / var(--tw-placeholder-opacity, 1));
-}
-.placeholder-zinc-700::placeholder {
-  --tw-placeholder-opacity: 1;
-  color: rgb(63 63 70 / var(--tw-placeholder-opacity, 1));
-}
-.placeholder-zinc-200::-moz-placeholder {
-  --tw-placeholder-opacity: 1;
-  color: rgb(228 228 231 / var(--tw-placeholder-opacity, 1));
-}
-.placeholder-zinc-200::placeholder {
-  --tw-placeholder-opacity: 1;
-  color: rgb(228 228 231 / var(--tw-placeholder-opacity, 1));
-}
-.placeholder-zinc-300::-moz-placeholder {
-  --tw-placeholder-opacity: 1;
-  color: rgb(212 212 216 / var(--tw-placeholder-opacity, 1));
-}
-.placeholder-zinc-300::placeholder {
-  --tw-placeholder-opacity: 1;
-  color: rgb(212 212 216 / var(--tw-placeholder-opacity, 1));
 }
 .opacity-0 {
   opacity: 0;
@@ -2394,6 +2469,10 @@ video {
   --tw-backdrop-blur: blur(12px);
   backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
+.backdrop-blur-sm {
+  --tw-backdrop-blur: blur(4px);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
 .transition {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -2404,13 +2483,13 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
-.transition-transform {
-  transition-property: transform;
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
-.transition-colors {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+.transition-transform {
+  transition-property: transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -2426,11 +2505,20 @@ video {
 .delay-500 {
   transition-delay: 500ms;
 }
+.delay-700 {
+  transition-delay: 700ms;
+}
 .duration-200 {
   transition-duration: 200ms;
 }
 .duration-300 {
   transition-duration: 300ms;
+}
+.duration-500 {
+  transition-duration: 500ms;
+}
+.duration-700 {
+  transition-duration: 700ms;
 }
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -2550,9 +2638,20 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
+.hover\\:text-orange-600:hover {
+  --tw-text-opacity: 1;
+  color: rgb(234 88 12 / var(--tw-text-opacity, 1));
+}
+
 .hover\\:shadow-xl:hover {
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.hover\\:shadow-lg:hover {
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
@@ -2577,6 +2676,16 @@ video {
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
+.focus\\:ring-4:focus {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.focus\\:ring-inset:focus {
+  --tw-ring-inset: inset;
+}
+
 .focus\\:ring-gray-300:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(209 213 219 / var(--tw-ring-opacity, 1));
@@ -2597,6 +2706,10 @@ video {
   --tw-ring-color: rgb(82 82 91 / var(--tw-ring-opacity, 1));
 }
 
+.focus\\:ring-orange-500\\/50:focus {
+  --tw-ring-color: rgb(249 115 22 / 0.5);
+}
+
 .focus\\:ring-offset-2:focus {
   --tw-ring-offset-width: 2px;
 }
@@ -2605,15 +2718,15 @@ video {
   --tw-ring-offset-color: #18181b;
 }
 
-.active\\:scale-95:active {
-  --tw-scale-x: .95;
-  --tw-scale-y: .95;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .active\\:scale-\\[0\\.98\\]:active {
   --tw-scale-x: 0.98;
   --tw-scale-y: 0.98;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.active\\:scale-95:active {
+  --tw-scale-x: .95;
+  --tw-scale-y: .95;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -2629,10 +2742,40 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.group\\/item:hover .group-hover\\/item\\:scale-110 {
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 @media (min-width: 640px) {
+
+  .sm\\:left-4 {
+    left: 1rem;
+  }
+
+  .sm\\:right-4 {
+    right: 1rem;
+  }
+
+  .sm\\:mb-8 {
+    margin-bottom: 2rem;
+  }
+
+  .sm\\:mt-12 {
+    margin-top: 3rem;
+  }
+
+  .sm\\:mt-16 {
+    margin-top: 4rem;
+  }
 
   .sm\\:h-40 {
     height: 10rem;
+  }
+
+  .sm\\:h-\\[450px\\] {
+    height: 450px;
   }
 
   .sm\\:w-40 {
@@ -2647,6 +2790,10 @@ video {
     flex-direction: row;
   }
 
+  .sm\\:gap-8 {
+    gap: 2rem;
+  }
+
   .sm\\:p-6 {
     padding: 1.5rem;
   }
@@ -2655,20 +2802,99 @@ video {
     padding: 2rem;
   }
 
+  .sm\\:p-3 {
+    padding: 0.75rem;
+  }
+
+  .sm\\:p-12 {
+    padding: 3rem;
+  }
+
+  .sm\\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .sm\\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
   .sm\\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+
+  .sm\\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .sm\\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .sm\\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .sm\\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 }
 
 @media (min-width: 768px) {
 
+  .md\\:left-6 {
+    left: 1.5rem;
+  }
+
+  .md\\:right-6 {
+    right: 1.5rem;
+  }
+
+  .md\\:left-auto {
+    left: auto;
+  }
+
   .md\\:col-span-2 {
     grid-column: span 2 / span 2;
   }
 
+  .md\\:my-14 {
+    margin-top: 3.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .md\\:mt-3 {
+    margin-top: 0.75rem;
+  }
+
   .md\\:block {
     display: block;
+  }
+
+  .md\\:hidden {
+    display: none;
+  }
+
+  .md\\:h-8 {
+    height: 2rem;
+  }
+
+  .md\\:w-8 {
+    width: 2rem;
+  }
+
+  .md\\:w-\\[55\\%\\] {
+    width: 55%;
+  }
+
+  .md\\:w-\\[65\\%\\] {
+    width: 65%;
   }
 
   .md\\:grid-cols-2 {
@@ -2687,8 +2913,37 @@ video {
     align-items: center;
   }
 
+  .md\\:justify-center {
+    justify-content: center;
+  }
+
   .md\\:justify-between {
     justify-content: space-between;
+  }
+
+  .md\\:gap-10 {
+    gap: 2.5rem;
+  }
+
+  .md\\:gap-12 {
+    gap: 3rem;
+  }
+
+  .md\\:p-4 {
+    padding: 1rem;
+  }
+
+  .md\\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .md\\:pb-0 {
+    padding-bottom: 0px;
+  }
+
+  .md\\:pr-24 {
+    padding-right: 6rem;
   }
 
   .md\\:text-2xl {
@@ -2704,6 +2959,24 @@ video {
   .md\\:text-\\[10rem\\] {
     font-size: 10rem;
   }
+
+  .md\\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .md\\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .md\\:leading-tight {
+    line-height: 1.25;
+  }
+
+  .md\\:\\[clip-path\\:polygon\\(0_0\\2c 100\\%_0\\2c 80\\%_100\\%\\2c 0_100\\%\\)\\] {
+    clip-path: polygon(0 0,100% 0,80% 100%,0 100%);
+  }
 }
 
 @media (min-width: 1024px) {
@@ -2716,6 +2989,34 @@ video {
     grid-column: span 3 / span 3;
   }
 
+  .lg\\:mt-10 {
+    margin-top: 2.5rem;
+  }
+
+  .lg\\:mt-14 {
+    margin-top: 3.5rem;
+  }
+
+  .lg\\:h-\\[600px\\] {
+    height: 600px;
+  }
+
+  .lg\\:h-7 {
+    height: 1.75rem;
+  }
+
+  .lg\\:w-7 {
+    width: 1.75rem;
+  }
+
+  .lg\\:w-\\[55\\%\\] {
+    width: 55%;
+  }
+
+  .lg\\:w-\\[60\\%\\] {
+    width: 60%;
+  }
+
   .lg\\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -2723,7 +3024,40 @@ video {
   .lg\\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
-}`, "",{"version":3,"sources":["webpack://./frontend/assets/css/style.css"],"names":[],"mappings":"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AAA;AAAmB;AAAnB;EAAA;AAAmB;AAAnB;EAAA;AAAmB;AAAnB;EAAA;AAAmB;AAAnB;EAAA;AAAmB;AAAnB;EAAA;AAAmB;AAAnB;EAAA;AAAmB;AAAnB;EAAA;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,oBAAmB;EAAnB;AAAmB;AAAnB;EAAA,2BAAmB;EAAnB;AAAmB;AAAnB;EAAA,2BAAmB;EAAnB;AAAmB;AAAnB;EAAA,2BAAmB;EAAnB;AAAmB;AAAnB;EAAA,2BAAmB;EAAnB;AAAmB;AAAnB;EAAA,2BAAmB;EAAnB;AAAmB;AAAnB;EAAA,2BAAmB;EAAnB;AAAmB;AAAnB;EAAA,2BAAmB;EAAnB;AAAmB;AAAnB;EAAA,2BAAmB;EAAnB;AAAmB;AAAnB;EAAA,2BAAmB;EAAnB;AAAmB;AAAnB;EAAA,2BAAmB;EAAnB;AAAmB;AAAnB;EAAA;AAAmB;AAAnB;EAAA;AAAmB;AAAnB;EAAA,0EAAmB;EAAnB,8FAAmB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","sourcesContent":["@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n@layer components {\n\n  /* ESTILIZAÇÃO PARA CARDS DE PRODUTOS */\n  .cards {\n    @apply border border-gray-300 flex flex-col transform transition-transform duration-300 ease-in-out hover:scale-110\n  }\n\n  /* ESTILIZAÇÃO PARA ANIMAR BOTÕES */\n  .btn-ok {\n    @apply bg-orange-500 rounded-full transform transition-transform duration-300 ease-in-out hover:scale-110\n  }\n\n  /* ESTILIZAÇÃO PARA LIMITAR A LARGURA */\n  .pixel {\n    max-width: 470px;\n  }\n}\n\n.opcoes:has(:hover) .card:not(:hover) {\n  filter: grayscale(1) brightness(0.6);\n  transform: scale(0.95);\n}\n\n.cadastrado {\n  background-color: rgba(0, 209, 0, 0.774);\n  transition: 0.3s ease-in-out;\n}\n\n/* FAZ COM QUE OS BANNERS ROTEM INFINITAMENTE */\n.slider img {\n  animation: slide 12s infinite;\n}\n\n.slider img:nth-child(1) {\n  animation-delay: 0s;\n}\n\n.slider img:nth-child(2) {\n  animation-delay: 3s;\n}\n\n.slider img:nth-child(3) {\n  animation-delay: 6s;\n}\n\n.slider img:nth-child(4) {\n  animation-delay: 9s;\n}\n\n@keyframes slide {\n  0% {\n    opacity: 0;\n  }\n\n  10% {\n    opacity: 1;\n  }\n\n  30% {\n    opacity: 1;\n  }\n\n  40% {\n    opacity: 0;\n  }\n\n  100% {\n    opacity: 0;\n  }\n}\n\n/* FAZ COM QUE OS BANNERS ROTEM INFINITAMENTE */"],"sourceRoot":""}]);
+
+  .lg\\:p-20 {
+    padding: 5rem;
+  }
+
+  .lg\\:px-12 {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  .lg\\:py-24 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .lg\\:pr-32 {
+    padding-right: 8rem;
+  }
+
+  .lg\\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  .lg\\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .lg\\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+}`, "",{"version":3,"sources":["webpack://./frontend/assets/css/style.css"],"names":[],"mappings":"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","sourcesContent":["@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n@layer components {\n\n  /* ESTILIZAÇÃO PARA CARDS DE PRODUTOS */\n  .cards {\n    @apply border border-gray-300 flex flex-col transform transition-transform duration-300 ease-in-out hover:scale-110\n  }\n\n  /* ESTILIZAÇÃO PARA ANIMAR BOTÕES */\n  .btn-ok {\n    @apply bg-orange-500 rounded-full transform transition-transform duration-300 ease-in-out hover:scale-110\n  }\n\n  /* ESTILIZAÇÃO PARA LIMITAR A LARGURA */\n  .pixel {\n    max-width: 470px;\n  }\n}\n\n.opcoes:has(:hover) .card:not(:hover) {\n  filter: grayscale(1) brightness(0.6);\n  transform: scale(0.95);\n}\n\n.cadastrado {\n  background-color: rgba(0, 209, 0, 0.774);\n  transition: 0.3s ease-in-out;\n}\n\n/* FAZ COM QUE OS BANNERS ROTEM INFINITAMENTE */\n.slider img {\n  animation: slide 12s infinite;\n}\n\n.slider img:nth-child(1) {\n  animation-delay: 0s;\n}\n\n.slider img:nth-child(2) {\n  animation-delay: 3s;\n}\n\n.slider img:nth-child(3) {\n  animation-delay: 6s;\n}\n\n.slider img:nth-child(4) {\n  animation-delay: 9s;\n}\n\n@keyframes slide {\n  0% {\n    opacity: 0;\n  }\n\n  10% {\n    opacity: 1;\n  }\n\n  30% {\n    opacity: 1;\n  }\n\n  40% {\n    opacity: 0;\n  }\n\n  100% {\n    opacity: 0;\n  }\n}\n\n/* FAZ COM QUE OS BANNERS ROTEM INFINITAMENTE */"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -7461,12 +7795,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/css/style.css */ "./frontend/assets/css/style.css");
 /* harmony import */ var _modules_images__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/images */ "./frontend/modules/images.js");
 /* harmony import */ var _modules_setImage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/setImage */ "./frontend/modules/setImage.js");
-/* harmony import */ var _modules_filtraAroProdutos__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/filtraAroProdutos */ "./frontend/modules/filtraAroProdutos.js");
-/* harmony import */ var _modules_switchMap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/switchMap */ "./frontend/modules/switchMap.js");
-/* harmony import */ var _modules_confirmaSelect__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/confirmaSelect */ "./frontend/modules/confirmaSelect.js");
-/* harmony import */ var _modules_imagensCadastro__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/imagensCadastro */ "./frontend/modules/imagensCadastro.js");
-/* harmony import */ var _modules_galeriaProduto__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/galeriaProduto */ "./frontend/modules/galeriaProduto.js");
-/* harmony import */ var _modules_validaFormContato__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/validaFormContato */ "./frontend/modules/validaFormContato.js");
+/* harmony import */ var _modules_switchMap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/switchMap */ "./frontend/modules/switchMap.js");
+/* harmony import */ var _modules_confirmaSelect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/confirmaSelect */ "./frontend/modules/confirmaSelect.js");
+/* harmony import */ var _modules_imagensCadastro__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/imagensCadastro */ "./frontend/modules/imagensCadastro.js");
+/* harmony import */ var _modules_galeriaProduto__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/galeriaProduto */ "./frontend/modules/galeriaProduto.js");
+/* harmony import */ var _modules_validaFormContato__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/validaFormContato */ "./frontend/modules/validaFormContato.js");
 
 
 
@@ -7481,17 +7814,15 @@ __webpack_require__.r(__webpack_exports__);
 (0,_modules_setImage__WEBPACK_IMPORTED_MODULE_2__["default"])('.create-svg', _modules_images__WEBPACK_IMPORTED_MODULE_1__.images.createSvg);
 (0,_modules_setImage__WEBPACK_IMPORTED_MODULE_2__["default"])('.visitar-svg', _modules_images__WEBPACK_IMPORTED_MODULE_1__.images.visitarSvg);
 
-(0,_modules_filtraAroProdutos__WEBPACK_IMPORTED_MODULE_3__["default"])();
+(0,_modules_switchMap__WEBPACK_IMPORTED_MODULE_3__["default"])();
 
-(0,_modules_switchMap__WEBPACK_IMPORTED_MODULE_4__["default"])();
+(0,_modules_confirmaSelect__WEBPACK_IMPORTED_MODULE_4__["default"])();
 
-(0,_modules_confirmaSelect__WEBPACK_IMPORTED_MODULE_5__["default"])();
+(0,_modules_imagensCadastro__WEBPACK_IMPORTED_MODULE_5__["default"])();
 
-(0,_modules_imagensCadastro__WEBPACK_IMPORTED_MODULE_6__["default"])();
+(0,_modules_galeriaProduto__WEBPACK_IMPORTED_MODULE_6__["default"])();
 
-(0,_modules_galeriaProduto__WEBPACK_IMPORTED_MODULE_7__["default"])();
-
-(0,_modules_validaFormContato__WEBPACK_IMPORTED_MODULE_8__["default"])();
+(0,_modules_validaFormContato__WEBPACK_IMPORTED_MODULE_7__["default"])();
 })();
 
 /******/ })()
